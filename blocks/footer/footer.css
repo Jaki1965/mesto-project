@@ -1,0 +1,12 @@
+/* общие стили подвала */
+.footer {
+  /* border: 1px solid yellow; */
+  margin: auto;
+  max-width: 880px;
+}
+
+@media screen and (max-width: 1279px) {
+  .footer {
+    max-width: 282px;
+  }
+}

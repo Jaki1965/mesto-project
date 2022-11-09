@@ -1,0 +1,6 @@
+/* самые общие стили проекта */
+.page {
+  background: #000;
+  color: #fff;
+  font-family: "Inter", "Arial", sans-serif;
+}

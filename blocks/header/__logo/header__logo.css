@@ -1,0 +1,13 @@
+/* стили логотипа проекта */
+.header__logo {
+  max-width: 142px;
+  min-height: 33px;
+}
+
+@media screen and (max-width: 1279px) {
+  .header__logo {
+    margin-left: 27px;
+    max-width: 103.74px;
+    min-height: 24.4px;
+  }
+}

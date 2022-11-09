@@ -1,0 +1,18 @@
+/* стили подзаголовка в profile */
+.profile__subtitle {
+  /* border: 1px solid gold; */
+  margin: 16px 0 0 0;
+  padding: 0;
+  line-height: 21.78px;
+  font-size: 18px;
+  font-weight: 400;
+}
+
+@media screen and (max-width: 1279px) {
+  .profile__subtitle {
+    margin: 8px 0 0 0;
+    line-height: 16.94px;
+    font-size: 14px;
+    text-align: center;
+  }
+}
