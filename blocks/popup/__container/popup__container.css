@@ -1,18 +1,21 @@
 /* стили для popup контейнера */
 .popup__container {
-  margin: auto;
+  margin-left: auto;
+  margin-right: auto;
   background: #fff;
   border-radius: 10px;
   position: relative;
   width: 430px;
-  height: 330px;
-  box-shadow: 0px 0px 25px 0px rgba(0, 0, 0, 0.15);
+  padding-top: 34px; /* испарвлено по замечанию ревьюера - "лучше не указывать min-height, без него элемент займет по высоте место на странице в соответствии со своим контентом; вместо этого лучше задать соответствующие padding-и" */
+  padding-bottom: 3px;
+  box-shadow: 0 0 25px rgba(0, 0, 0, 0.15); /* исправлено по замечанию ревьюера - "значение тени не соответствует макету, необходимо скорректировать; цвет тени задан корректно
+  для нулевых значений можно не указывать единицы измерения" */
 }
 
 
-@media screen and (max-width: 1279px) {
+@media screen and (max-width: 920px) {
   .popup__container {
     width: 282px;
-    height: 322px;
+    padding-top: 25px; /* испарвлено по замечанию ревьюера - "лучше не указывать min-height, без него элемент займет по высоте место на странице в соответствии со своим контентом; вместо этого лучше задать соответствующие padding-и" */
   }
 }

@@ -1,19 +1,21 @@
 /* стили кнопочки с сердечком */
 .element__button-heart {
-  /* border: 1px solid red; */
-  margin: 0 ;
-  border: 0;   /* не уверен, что нужно... еще проверю ! */
+  background-color: rgba(255, 255, 255, 0.0);  /* исправлено по замечанию ревьюера - "необходимо задать прозрачный цвет фона для универсальности" */
+  margin: 0;
+  border: none; 
   padding: 0;
   width: 22px;
   height: 19px;
   background: url(../../../images/Heart-Button.svg);
+  background-position: center;  /* внесено по замечанию ревьюера - "необходимо задать в соответствии с макетом background-position и background-size" */
+  background-size: 22px 19px;  /* внесено по замечанию ревьюера - "необходимо задать в соответствии с макетом background-position и background-size" */
   background-repeat: no-repeat;
   align-self: center;
   margin-right: 20px;
   transition: opacity .5s;
+  cursor: pointer; /* исправлено по замечанию ревьюера - "свойство необходимо в основных стилях, т.к. должно применяться не только при наведении" */
 }
 
 .element__button-heart:hover{
   opacity: 0.5;
-  cursor: pointer;
 }

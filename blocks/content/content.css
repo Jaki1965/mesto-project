@@ -1,12 +1,18 @@
 /* стили раздела content не факт, что раздел понадобиться, но с ним очень удобно делать sticky footer 
 из-за того, что в этом выарианте после footer есть блок popup - здесь делать не буду, но на будущее оставлю */
 .content {
-  /* border: 1px dashed rgb(162, 255, 0); */
   margin: auto;
   max-width: 1280px;
 }
 
-@media screen and (max-width: 1279px) {
+@media screen and (max-width: 920px) {
+  .content {
+    max-width: 620px;
+  }
+}
+
+
+@media screen and (max-width: 620px) {
   .content {
     max-width: 320px;
   }

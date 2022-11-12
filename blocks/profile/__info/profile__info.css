@@ -1,12 +1,12 @@
 /* стили элемента info - эленмент-контейнер блокового типа содержащий заголовок уровня h1, кнопку (заключенные в блоковый элемент) и подзаголовок*/
 .profile__info {
-  /* border: 1px solid violet; */
+  margin-left: 30px;
   margin-top: 22px;
 }
 
-@media screen and (max-width:1279px) {
+@media screen and (max-width: 920px) {
   .profile__info {
-    margin-top: 22.25px;
+    margin-top: 24px;
     margin-left: auto;
     margin-right: auto;
   }

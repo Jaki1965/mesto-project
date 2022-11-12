@@ -1,9 +1,8 @@
 /* стили маленького подвала, состоящего из надписи и кнопки "сердечко" в каждом элементе */
 .element__footer {
-  /* border: 1px solid orangered; */
   background: #fff;
   border-radius: 0 0 10px 10px;
-  height: 79px;
+  min-height: 79px;  /* исправлено по замечанию ревьюера - "лучше не задавать фиксированную высоту во избежание переполнения контентом" */
   display: flex;
   flex-direction: row;
   justify-content: space-between;

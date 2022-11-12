@@ -1,6 +1,5 @@
 /* общие стили списка в котрый упракованы element */
 .grid__list {
-  /* border: 1px solid blue; */
   margin: 0 auto;
   padding: 0;
   list-style: none;
@@ -11,10 +10,18 @@
   grid-row-gap: 20px;
 }
 
-@media screen and (max-width: 1279px) {
+@media screen and (max-width: 920px) {
+  .grid__list {
+    grid-template-columns: repeat(2, auto);
+    grid-template-rows: repeat(3, auto);
+  }
+}
+
+
+@media screen and (max-width: 620px) {
   .grid__list {
     grid-template-columns: auto;
     grid-template-rows: repeat(6, auto);
-    grid-row-gap: 20px;
   }
 }
+

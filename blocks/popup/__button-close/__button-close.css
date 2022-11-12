@@ -8,22 +8,23 @@
   position: absolute;
   width: 32px;
   height: 32px;
-  border: 0;
+  border: none; /* исправлено по замечанию ревьюера - "обнуление стандартного border принято указывать в значении none, т.к. это стандартное значение для отстутствия границ" */
   padding: 0;
   top: -40px;
   right: -40px;
   transition: opacity 0.2s linear;
+  cursor: pointer;  /* (НЕ УВЕРЕН, что правильно понял замечание) Исправлено по замечанию ревьюера - "для интерактивных элементов лучше явно указывать значение для cursor" */
 }
 
 .popup__button-close:hover {
   opacity: 0.6;
 }
 
-@media screen and (max-width: 1279px) {
+@media screen and (max-width: 920px) {
   .popup__button-close {
     width: 20px;
     height: 20px;
     top: -36px;
-    right: 0px;
+    right: 0; /* исправлено по замечанию ревьюера - "для нулевых значений можно не указывать единицы измерения, подробнее в стандартах" */
   }
 }

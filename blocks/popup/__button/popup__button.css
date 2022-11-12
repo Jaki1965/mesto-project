@@ -4,7 +4,8 @@
   max-width: 358px;
   min-width: 238px;
   width: 100%;    
-  height: 50.15px;
+  height: 50px;  /* исправлено по замечанию ревьюера - "значение не соответствует макету, необходимо скорректировать" */
+  font-size: 24px;
   margin: 15px 0 0;
   padding: 0;
   border: 0;
@@ -22,9 +23,9 @@
   opacity: 0.8;
 }
 
-@media screen and (max-width: 1279px) {
+@media screen and (max-width: 920px) {
   .popup__button {
-    line-height: 16.94px;
+    line-height: 17px; /* исправлено по замечанию ревьюера - "значение не соответствует макету, необходимо скорректировать" */
     font-size: 14px;
     height: 46px;
 }

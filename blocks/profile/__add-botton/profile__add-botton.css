@@ -1,27 +1,32 @@
 /* стили кнопки "add* - добвавить */
 .profile__add-botton {
-  margin: 0;
+  background-color: rgba(0, 0, 0, 0.0); /* исправлено по замечанию ревьюера - "необходимо задать прозрачный цвет фона для универсальности" */
+  margin: 0 0 0 214px;
   padding: 0;
   border: 2px solid #fff;
   border-radius: 2px;
   background: url(../../../images/Plus.svg);
+  background-size: 22px 22px; /* исправлено по замечанию ревьюера - "необходимо указать соответствующие макету размеры, т.к. фоновые изображения в макете имеют меньшие размеры, чем кнопки" */
   background-repeat: no-repeat;
   background-position: center;
   width: 150px;
   height: 50px;
   align-self: center;
+  cursor: pointer;          /* исправлено по замечанию ревьюера - "свойство необходимо в основных стилях, т.к. должно применяться не только при наведении" */
   transition: opacity .5s;
 }
 
 .profile__add-botton:hover {
   opacity: 0.6;
-  cursor: pointer;
 }
 
-@media screen and (max-width: 1279px) {
+@media screen and (max-width: 920px) {
   .profile__add-botton {
     width: 282px;
     height: 50px;
-    margin-top: 24px;
+    background-size: 16px 16px; /* исправлено по замечанию ревьюера - "необходимо указать соответствующие макету размеры, т.к. фоновые изображения в макете имеют меньшие размеры, чем кнопки" */
+    margin-top: 33px;
+    margin-left: auto;
+    margin-right: auto;
   }
 }

@@ -2,7 +2,7 @@
 
 /* Эти стили всегда самые первые и именно в таком порядке */
 @import url(../vendor/normalize.css);
-@import url(../fonts/fonts.css);
+@import url(../vendor/fonts/fonts.css); /* исправлено по замечанию ревьюера - "файлы шрифтов лучше хранить в папке fonts в папке vendor вместе с файлом подключения шрифтов fonts.css" */
 
 /* самые общие стили проекта */
 @import url(../blocks/page/page.css);
@@ -17,7 +17,6 @@
 /* стили блока (секции) profile и его элементов */
 @import url(../blocks/profile/profile.css);
 @import url(../blocks/profile/__box-avatar-info/profile__box-avatar-info.css);
-@import url(../blocks/profile/__box-avatar/profile__box-avatar.css);
 @import url(../blocks/profile/__avatar/profile__avatar.css);
 @import url(../blocks/profile/__info/profile__info.css);
 @import url(../blocks/profile/__title-botton/profile__title-botton.css);

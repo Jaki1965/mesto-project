@@ -1,6 +1,5 @@
 /* стили для каждого элемента внутри grid__list */
 .element {
-  /* border: 1px solid red; */
   margin: 0;
   padding: 0;
   display: grid;

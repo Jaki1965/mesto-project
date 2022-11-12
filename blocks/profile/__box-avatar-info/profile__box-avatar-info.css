@@ -1,11 +1,10 @@
 /* стили коробки в котрой находятся avatar и info */
 .profile__box-avatar-info {
-  /* border: 1px solid green; */
   display: flex;
   flex-direction: row; 
 }
 
-@media screen and (max-width: 1279px) {
+@media screen and (max-width: 920px) {
   .profile__box-avatar-info {
     flex-direction: column;
   }
