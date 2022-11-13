@@ -1,4 +1,5 @@
 /* стили кнопки (крестик в правом верхнем углу), котрая закрывает контейнер */
+/* наименование файла по замечанию ревьюера  исправлено popup__button-close */
 .popup__button-close {
   background: url(../../../images/Close-Icon.svg);
   background-repeat: no-repeat;

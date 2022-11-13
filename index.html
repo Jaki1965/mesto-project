@@ -21,7 +21,7 @@
     <section class="profile">
       <div class="profile__box-avatar-info">
         <!-- <div class="profile__box-avatar"> -->  <!--Исправлено по замечанию ревьюера - "ЭТОЙ ОБЕРТКИ БОЛЬШЕ НЕТ"-->
-        <img class="profile__avatar" src="./images/Jacques.jpg" alt="Жак-Ив Кусто"> <!--Исправлено по замечанию ревьюера - "необходимо скорректировать путь до файла, относительный путь необходимо начинать с ./"-->
+        <img class="profile__avatar" src="./images/Jacques.jpg" alt="Здесь располагается ваш аватар"> <!--Исправлено по замечанию ревьюера - "в атрибуте alt лучше указать более общее описание, т.к. проект предполагает, что пользователем может быть не только Кусто"-->
         <!-- </div> -->
         <div class="profile__info">
           <div class="profile__title-botton">
@@ -34,53 +34,63 @@
       <button class="profile__add-botton" type="button" aria-label="Добаляет каточку"></button> <!--Исправлено по замечанию ревьюера - "на кнопку лучше добавить aria-label с описанием что это за элемент"-->
     </section>
     
-    <section class="grid">
-      <div class="grid__list">
-        <article class="element"> <!-- Исправлено по замечанию ревьюера - "'Можно лучше': внутри <li> можно применить тег статьи <article>, тогда он станет более самостоятельным и семантическим блоком
-          на <article> можно сделать класс самостоятельного блока, тогда микс классов на <li> не нужен" По ссылке прочел - "Тег для создания самостоятельных единиц контента: от карточек до комментов"
-          Здесь как раз карточки. Очень удобно!-->
-          <img class="element__image" src="./images/kirill-pershin-1088404-unsplash.jpg" alt="Карачаевск">
-          <div class="element__footer">
-            <h2 class="element__title">Карачаевск</h2>
-            <button class="element__button-heart" type="button" aria-label="Активирует знак сердечко - понравилось"></button> <!--Исправлено по замечанию ревьюера - "на кнопку лучше добавить aria-label с описанием что это за элемент"-->
-          </div>
-        </article>
-        <article class="element">
-          <img class="element__image" src="./images/kirill-pershin-1404681-unsplash.jpg" alt="Эльбрус">
-          <div class="element__footer">
-            <h2 class="element__title">Гора Эльбрус</h2>
-            <button class="element__button-heart" type="button" aria-label="Активирует знак сердечко - понравилось"></button> <!--Исправлено по замечанию ревьюера - "на кнопку лучше добавить aria-label с описанием что это за элемент"-->
-          </div>
-        </article>
-        <article class="element">
-          <img  class="element__image" src="./images/kirill-pershin-1556355-unsplash.jpg" alt="Домбай">
-          <div class="element__footer">
-            <h2 class="element__title">Домбай</h2>
-            <button class="element__button-heart" type="button" aria-label="Активирует знак сердечко - понравилось"></button> <!--Исправлено по замечанию ревьюера - "на кнопку лучше добавить aria-label с описанием что это за элемент"-->
-          </div>
-        </article>
-        <article class="element">
-          <img  class="element__image" src="./images/kirill-pershin-1404681-unsplash.jpg" alt="Эльбрус">
-          <div class="element__footer">
-            <h2 class="element__title">Гора Эльбрус</h2>
-            <button class="element__button-heart" type="button" aria-label="Активирует знак сердечко - понравилось"></button> <!--Исправлено по замечанию ревьюера - "на кнопку лучше добавить aria-label с описанием что это за элемент"-->
-          </div>
-        </article>
-        <article class="element">
-          <img  class="element__image" src="./images/kirill-pershin-1556355-unsplash.jpg" alt="Домбай">
-          <div class="element__footer">
-            <h2 class="element__title">Домбай</h2>
-            <button class="element__button-heart" type="button" aria-label="Активирует знак сердечко - понравилось"></button> <!--Исправлено по замечанию ревьюера - "на кнопку лучше добавить aria-label с описанием что это за элемент"-->
-          </div>
-        </article>
-        <article class="element">
-          <img  class="element__image" src="./images/kirill-pershin-1088404-unsplash.jpg" alt="Карачаево-Черкесия">
-          <div class="element__footer">
-            <h2 class="element__title">Карачаево-Черкесия</h2>
-            <button  class="element__button-heart" type="button" aria-label="Активирует знак сердечко - понравилось"></button> <!--Исправлено по замечанию ревьюера - "на кнопку лучше добавить aria-label с описанием что это за элемент"-->
-          </div>
-        </article>
-      </div>
+    <section class="grid" aria-label="Секция содержащая карточки мест"> <!--Внесено по замечаниюю ревьюера (Спасибо большое! Я часто думал, как избежать предупреждений валидатора для таких случаев. Теперь знаю !)-->
+      <ul class="grid__list"> <!--Исправил по замечани ю ревьюера - "ранее тут отлично располагался список <ul> с данным классом; хорошо сделать разметку элементов в виде section > ul > li > article"-->
+        <li class="grid__list-cell"> <!--Селектор как таковой не используется, но оставил, на тот случай, если понадобиться дорабатывать - структура готова. Кроме того, насколько я помню элементы без селекторов оставлять нежелательно-->
+          <article class="element"> <!--Извиняюсь за безтолковость - неправильно вас понял, в прошлый раз. Надеюсь, в этот раз сделал верно-->
+            <img class="element__image" src="./images/kirill-pershin-1088404-unsplash.jpg" alt="Карачаевск">
+            <div class="element__footer">
+              <h2 class="element__title">Карачаевск</h2>
+              <button class="element__button-heart" type="button" aria-label="Активирует знак сердечко - понравилось"></button> <!--Исправлено по замечанию ревьюера - "на кнопку лучше добавить aria-label с описанием что это за элемент"-->
+            </div>
+          </article>
+        </li>
+        <li class="grid__list-cell">
+          <article class="element">
+            <img class="element__image" src="./images/kirill-pershin-1404681-unsplash.jpg" alt="Эльбрус">
+            <div class="element__footer">
+              <h2 class="element__title">Гора Эльбрус</h2>
+              <button class="element__button-heart" type="button" aria-label="Активирует знак сердечко - понравилось"></button> <!--Исправлено по замечанию ревьюера - "на кнопку лучше добавить aria-label с описанием что это за элемент"-->
+            </div>
+          </article>
+        </li>
+        <li class="grid__list-cell">
+          <article class="element">
+            <img  class="element__image" src="./images/kirill-pershin-1556355-unsplash.jpg" alt="Домбай">
+            <div class="element__footer">
+              <h2 class="element__title">Домбай</h2>
+              <button class="element__button-heart" type="button" aria-label="Активирует знак сердечко - понравилось"></button> <!--Исправлено по замечанию ревьюера - "на кнопку лучше добавить aria-label с описанием что это за элемент"-->
+            </div>
+          </article>
+        </li>
+        <li class="grid__list-cell">
+          <article class="element">
+            <img  class="element__image" src="./images/kirill-pershin-1404681-unsplash.jpg" alt="Эльбрус">
+            <div class="element__footer">
+              <h2 class="element__title">Гора Эльбрус</h2>
+              <button class="element__button-heart" type="button" aria-label="Активирует знак сердечко - понравилось"></button> <!--Исправлено по замечанию ревьюера - "на кнопку лучше добавить aria-label с описанием что это за элемент"-->
+            </div>
+          </article>
+        </li>
+        <li class="grid__list-cell">
+          <article class="element">
+            <img  class="element__image" src="./images/kirill-pershin-1556355-unsplash.jpg" alt="Домбай">
+            <div class="element__footer">
+              <h2 class="element__title">Домбай</h2>
+              <button class="element__button-heart" type="button" aria-label="Активирует знак сердечко - понравилось"></button> <!--Исправлено по замечанию ревьюера - "на кнопку лучше добавить aria-label с описанием что это за элемент"-->
+            </div>
+          </article>
+        </li>
+        <li class="grid__list-cell">
+          <article class="element">
+            <img  class="element__image" src="./images/kirill-pershin-1088404-unsplash.jpg" alt="Карачаево-Черкесия">
+            <div class="element__footer">
+              <h2 class="element__title">Карачаево-Черкесия</h2>
+              <button  class="element__button-heart" type="button" aria-label="Активирует знак сердечко - понравилось"></button> <!--Исправлено по замечанию ревьюера - "на кнопку лучше добавить aria-label с описанием что это за элемент"-->
+            </div>
+          </article>
+        </li>
+      </ul>
     </section>
 
   </main>
@@ -93,9 +103,9 @@
     <div class="popup__container">
       <h2 class="popup__header">Редактировать профиль</h2>
       <button class="popup__button-close" type="button" aria-label="Закрывает окно редактирования профиля"></button> <!--Исправлено по замечанию ревьюера - "на кнопку лучше добавить aria-label с описанием что это за элемент"-->
-      <form class="popup__form" name="ProfileEditing"> <!--Исправлено по замечанию ревьюера - "на <form> лучше добавить атрибут name, чтобы в дальнейшем, когда появится несколько форм, их проще было различить и искать; при работе с JavaScript имена принято задавать в формате camelCase"-->
-        <input class="popup__text popup__text_edit-firstname" type="text" name="firstname" value="Ваше имя" placeholder="Ваше имя"> <!--Исправлено по замечанию ревьюера - "1. placeholder 2. value - нейтрально еописание 3. Сложный модификатор  "-->
-        <input class="popup__text popup__text_edit-subtitle" type="text" name="subtitle"  value="Ваш род занятий" placeholder="Ваше род занятий"> <!--Исправлено по замечанию ревьюера - "1. placeholder 2. value - нейтрально еописание 3. Сложный модификатор "-->
+      <form class="popup__form" name="profileEditing"> <!--Исправлено по замечанию ревьюера - "на <form> лучше добавить атрибут name, чтобы в дальнейшем, когда появится несколько форм, их проще было различить и искать; при работе с JavaScript имена принято задавать в формате camelCase" (поправил формат)-->
+        <input class="popup__text popup__text_edit_name" type="text" name="name" value="Ваше имя" placeholder="Ваше имя"> <!--Исправлено по замечанию ревьюера - "1. placeholder 2. value - нейтрально еописание 3. Сложный модификатор  " (поправил модификатр)-->
+        <input class="popup__text popup__text_edit_career" type="text" name="career"  value="Ваш род занятий" placeholder="Ваше род занятий"> <!--Исправлено по замечанию ревьюера - "1. placeholder 2. value - нейтрально еописание 3. Сложный модификатор " (поправил модификатор)-->
         <button class="popup__button" type="submit" aria-label="Отправлет отредактированные данные на сервер">Сохранить</button> <!--Исправлено по замечанию ревьюера - "необходимо скорректировать, т.к. для всех кнопок в проекте необходимо применить семантический тег <button>"-->
       </form>
     </div>
