@@ -1,4 +1,3 @@
-/* модификатор подключающий (активирующий) popup */
 .popup_opened {
-  display: flex;  /* все как в учебнике */
+  display: flex;
 }

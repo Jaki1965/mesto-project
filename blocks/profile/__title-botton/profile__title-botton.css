@@ -1,4 +1,3 @@
-/* стили элемента блокового типа с title и button внутри  */
 .profile__title-botton {
   display: flex;
   flex-direction: row;

@@ -1,5 +1,3 @@
-/* стили кнопки (крестик в правом верхнем углу), котрая закрывает контейнер */
-/* наименование файла по замечанию ревьюера  исправлено popup__button-close */
 .popup__button-close {
   background: url(../../../images/Close-Icon.svg);
   background-repeat: no-repeat;
@@ -9,12 +7,12 @@
   position: absolute;
   width: 32px;
   height: 32px;
-  border: none; /* исправлено по замечанию ревьюера - "обнуление стандартного border принято указывать в значении none, т.к. это стандартное значение для отстутствия границ" */
+  border: none; 
   padding: 0;
   top: -40px;
   right: -40px;
   transition: opacity 0.2s linear;
-  cursor: pointer;  /* (НЕ УВЕРЕН, что правильно понял замечание) Исправлено по замечанию ревьюера - "для интерактивных элементов лучше явно указывать значение для cursor" */
+  cursor: pointer;  
 }
 
 .popup__button-close:hover {
@@ -26,6 +24,6 @@
     width: 20px;
     height: 20px;
     top: -36px;
-    right: 0; /* исправлено по замечанию ревьюера - "для нулевых значений можно не указывать единицы измерения, подробнее в стандартах" */
+    right: 0; 
   }
 }

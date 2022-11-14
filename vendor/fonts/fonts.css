@@ -1,13 +1,11 @@
-/* подключаем шрифты Inter */
-/* внесены изменения по замечанию ревьюера - "порядок свойств для @font-face : font-family, font-style, font-weight, font-display, src" */
 @font-face {
   font-family: 'Inter';
   font-style: normal;
   font-weight: 400;
-  font-display: swap; /* Используем это значение, когда раннее отображение текста является приоритетной задачей, но отображение текста другим шрифтом не нарушает нормального использования страницы. */
+  font-display: swap;
   src: 
-    url(./Inter-Regular.woff2) format("woff2"),  /*Исправлено по замечанию ревьюера - "необходимо скорректировать путь до файла, относительный путь необходимо начинать с ./ */
-    url(./Inter-Regular.woff) format("woff");    /*Исправлено по замечанию ревьюера - "необходимо скорректировать путь до файла, относительный путь необходимо начинать с ./ */
+    url(./Inter-Regular.woff2) format("woff2"),
+    url(./Inter-Regular.woff) format("woff");  
 }
 
 @font-face {
@@ -16,8 +14,8 @@
   font-weight: 500;
   font-display: swap;
   src: 
-    url(./Inter-Medium.woff2) format("woff2"), /*Исправлено по замечанию ревьюера - "необходимо скорректировать путь до файла, относительный путь необходимо начинать с ./ */
-    url(./Inter-Medium.woff) format("woff");   /*Исправлено по замечанию ревьюера - "необходимо скорректировать путь до файла, относительный путь необходимо начинать с ./ */
+    url(./Inter-Medium.woff2) format("woff2"),
+    url(./Inter-Medium.woff) format("woff"); 
 }
 
 @font-face {
@@ -26,6 +24,6 @@
   font-weight: 900;
   font-display: swap;
   src: 
-    url(./Inter-Black.woff2) format("woff2"), /*Исправлено по замечанию ревьюера - "необходимо скорректировать путь до файла, относительный путь необходимо начинать с ./ */
-    url(./Inter-Black.woff) format("woff");   /*Исправлено по замечанию ревьюера - "необходимо скорректировать путь до файла, относительный путь необходимо начинать с ./ */
+    url(./Inter-Black.woff2) format("woff2"),
+    url(./Inter-Black.woff) format("woff"); 
 }

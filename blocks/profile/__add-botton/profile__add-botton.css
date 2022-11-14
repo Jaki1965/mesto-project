@@ -1,18 +1,17 @@
-/* стили кнопки "add* - добвавить */
 .profile__add-botton {
-  background-color: transparent;  /* исправлено по замечанию ревьюера - "необходимо задать прозрачный цвет фона для универсальности" 2 - "для того, чтобы задать прозрачный цвет, достаточно указать значение transparent" */
+  background-color: transparent; 
   margin: 0 0 0 214px;
   padding: 0;
   border: 2px solid #fff;
   border-radius: 2px;
   background: url(../../../images/Plus.svg);
-  background-size: 22px 22px; /* исправлено по замечанию ревьюера - "необходимо указать соответствующие макету размеры, т.к. фоновые изображения в макете имеют меньшие размеры, чем кнопки" */
+  background-size: 22px 22px; 
   background-repeat: no-repeat;
   background-position: center;
   width: 150px;
   height: 50px;
   align-self: center;
-  cursor: pointer;          /* исправлено по замечанию ревьюера - "свойство необходимо в основных стилях, т.к. должно применяться не только при наведении" */
+  cursor: pointer;        
   transition: opacity .5s;
 }
 
@@ -24,7 +23,7 @@
   .profile__add-botton {
     width: 282px;
     height: 50px;
-    background-size: 16px 16px; /* исправлено по замечанию ревьюера - "необходимо указать соответствующие макету размеры, т.к. фоновые изображения в макете имеют меньшие размеры, чем кнопки" */
+    background-size: 16px 16px;
     margin-top: 33px;
     margin-left: auto;
     margin-right: auto;

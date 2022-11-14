@@ -1,4 +1,3 @@
-/* стили коробки в котрой находятся avatar и info */
 .profile__box-avatar-info {
   display: flex;
   flex-direction: row; 

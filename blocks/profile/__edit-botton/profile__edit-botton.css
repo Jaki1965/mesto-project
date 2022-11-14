@@ -1,15 +1,15 @@
-/* стили кнопки с рисунком внутри */
+
 .profile__edit-botton {
-  background-color: transparent;  /* исправлено по замечанию ревьюера - "необходимо задать прозрачный цвет фона для универсальности" 2 - "для того, чтобы задать прозрачный цвет, достаточно указать значение transparent" */
+  background-color: transparent;
   width: 24px;
   height: 24px;
-  margin-top: 15px;  /* блок отодвинут на 22px сверху и еще кнопка 15px - как раз 37px - как в Figma */
-  background: url(../../../images/Edit-Button.svg);
+  margin-top: 15px;
+  background: url(../../../images/edit_button.png);
   border: 1px solid #fff;
-  background-size: 10px 10px; /* исправлено по замечанию ревьюера - "необходимо указать соответствующие макету размеры, т.к. фоновые изображения в макете имеют меньшие размеры, чем кнопки" (2) поправил по макету*/
+  background-size: 10px 10px;
   background-repeat: no-repeat;
   background-position: center;
-  cursor: pointer;     /* исправлено по замечанию ревьюера - "свойство необходимо в основных стилях, т.к. должно применяться не только при наведении" */
+  cursor: pointer;
   transition: opacity .5s;
 }
 
@@ -20,8 +20,8 @@
 @media screen and (max-width: 920px) {
   .profile__edit-botton {
     margin-top: 8px;
-    width: 18px; /* исправлено по замечанию ревьюера - "значение не соответствует макету, необходимо скорректировать" */
-    height: 18px; /* исправлено по замечанию ревьюера - "значение не соответствует макету, необходимо скорректировать" */
-    background-size: 7.5px 7.5px; /* исправлено по замечанию ревьюера - "необходимо указать соответствующие макету размеры, т.к. фоновые изображения в макете имеют меньшие размеры, чем кнопки" (2) поправил по макету*/
+    width: 18px;
+    height: 18px;
+    background-size: 7.5px 7.5px;
   }
 }

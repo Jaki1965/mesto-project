@@ -1,4 +1,3 @@
-/* Стили popup в целом, так как display: none - без модификатора отображаться не будет*/
 .popup {
   background:rgba(0, 0, 0, .5);
   width: 100%;

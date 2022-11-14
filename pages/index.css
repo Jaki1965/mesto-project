@@ -1,20 +1,10 @@
-/* список подключения файлоф стилей проекта */
 
-/* Эти стили всегда самые первые и именно в таком порядке */
 @import url(../vendor/normalize.css);
-@import url(../vendor/fonts/fonts.css); /* исправлено по замечанию ревьюера - "файлы шрифтов лучше хранить в папке fonts в папке vendor вместе с файлом подключения шрифтов fonts.css" */
-
-/* самые общие стили проекта */
+@import url(../vendor/fonts/fonts.css);
 @import url(../blocks/page/page.css);
-
-/* стили шапки (раздела) - header и элементов в него входящих*/
 @import url(../blocks/header/header.css);
 @import url(../blocks/header/__logo/header__logo.css);
-
-/* самые общие стили тега (раздела) main */
 @import url(../blocks/content/content.css);
-
-/* стили блока (секции) profile и его элементов */
 @import url(../blocks/profile/profile.css);
 @import url(../blocks/profile/__box-avatar-info/profile__box-avatar-info.css);
 @import url(../blocks/profile/__avatar/profile__avatar.css);
@@ -24,8 +14,6 @@
 @import url(../blocks/profile/__edit-botton/profile__edit-botton.css);
 @import url(../blocks/profile/__subtitle/profile__subtitle.css);
 @import url(../blocks/profile/__add-botton/profile__add-botton.css);
-
-/* стили блока (секции) grid и его элементов */
 @import url(../blocks/grid/grid.css);
 @import url(../blocks/grid/__list/grid__list.css);
 @import url(../blocks/element/element.css);
@@ -33,18 +21,13 @@
 @import url(../blocks/element/__footer/element__footer.css);
 @import url(../blocks/element/__title/element__title.css);
 @import url(../blocks/element/__button-heart/element__button-heart.css);
-
-/* стили "подвала" раздела footer и его элементов*/
 @import url(../blocks/footer/footer.css);
 @import url(../blocks/footer/__copyright/footer__copyright.css);
-
-/* стили раздела popup и элементов входящих в него*/
 @import url(../blocks/popup/popup.css);
 @import url(../blocks/popup/__container/popup__container.css);
 @import url(../blocks/popup/__header/popup__header.css);
-@import url(../blocks/popup/__button-close/popup__button-close.css); /* исправлено по замечанию ревьюера !!! Как я умудрился?! */
+@import url(../blocks/popup/__button-close/popup__button-close.css);
 @import url(../blocks/popup/__form/popup__form.css);
 @import url(../blocks/popup/__text/popup__text.css);
 @import url(../blocks/popup/__button/popup__button.css);
-@import url(../blocks/popup/_opened/popup_opened.css);   /* модификатор для включения popup */
-
+@import url(../blocks/popup/_opened/popup_opened.css);
