@@ -3,7 +3,7 @@
   margin: 0;
   color: #000;
   width: 220px; 
-  line-height: 29px;  /* исправлено по замечанию ревьюера - "значение не соответствует макету, необходимо скорректировать" */
+  line-height: 29px; 
   font-size: 24px;
   font-weight: 900;
   align-self: center;

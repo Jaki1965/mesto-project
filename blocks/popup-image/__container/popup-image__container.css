@@ -1,0 +1,7 @@
+/* стили контейнера с попапом popup-image */
+.popup-image__container {
+  display: inline-block;
+  flex-direction: column;
+  position: relative;
+ 
+}

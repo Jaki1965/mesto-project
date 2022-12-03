@@ -12,102 +12,82 @@
   </head>
   <body class="page">
 
-  <header class="header">
-    <img class="header__logo" src="./images/Vector.svg" alt="Логотип проекта">
-  </header>
+    <header class="header">
+      <img class="header__logo" src="./images/Vector.svg" alt="Логотип проекта">
+    </header>
 
-  <main class="content">
+    <main class="content">
 
-    <section class="profile">
-      <div class="profile__box-avatar-info">
-        <img class="profile__avatar" src="./images/Jacques.jpg" alt="Аватар пользователя">
-        <div class="profile__info">
-          <div class="profile__title-botton">
-            <h1 class="profile__title">Жак-Ив Кусто</h1>
-            <button class="profile__edit-botton" type="button" aria-label="Редактирует профиль пользователя"></button>
+      <section class="profile">
+        <div class="profile__box-avatar-info">
+          <img class="profile__avatar" src="./images/Jacques.jpg" alt="Аватар пользователя">
+          <div class="profile__info">
+            <div class="profile__title-botton">
+              <h1 class="profile__title">Жак-Ив Кусто</h1>
+              <button class="profile__edit-botton" type="button" aria-label="Редактирует профиль пользователя"></button>
+            </div>
+            <p class="profile__subtitle">Исследователь океана</p>
           </div>
-          <p class="profile__subtitle">Исследователь океана</p>
         </div>
-      </div>
-      <button class="profile__add-botton" type="button" aria-label="Добаляет каточку"></button>
-    </section>
-    
-    <section class="grid" aria-label="Секция содержащая карточки мест">
-      <ul class="grid__list">
-        <li class="grid__list-cell">
-          <article class="element">
-            <img class="element__image" src="./images/kirill-pershin-1088404-unsplash.jpg" alt="Карачаевск">
-            <div class="element__footer">
-              <h2 class="element__title">Карачаевск</h2>
-              <button class="element__button-heart" type="button" aria-label="Активирует знак сердечко - понравилось"></button>
-            </div>
-          </article>
-        </li>
-        <li class="grid__list-cell">
-          <article class="element">
-            <img class="element__image" src="./images/kirill-pershin-1404681-unsplash.jpg" alt="Эльбрус">
-            <div class="element__footer">
-              <h2 class="element__title">Гора Эльбрус</h2>
-              <button class="element__button-heart" type="button" aria-label="Активирует знак сердечко - понравилось"></button>
-            </div>
-          </article>
-        </li>
-        <li class="grid__list-cell">
-          <article class="element">
-            <img  class="element__image" src="./images/kirill-pershin-1556355-unsplash.jpg" alt="Домбай">
-            <div class="element__footer">
-              <h2 class="element__title">Домбай</h2>
-              <button class="element__button-heart" type="button" aria-label="Активирует знак сердечко - понравилось"></button>
-            </div>
-          </article>
-        </li>
-        <li class="grid__list-cell">
-          <article class="element">
-            <img  class="element__image" src="./images/kirill-pershin-1404681-unsplash.jpg" alt="Эльбрус">
-            <div class="element__footer">
-              <h2 class="element__title">Гора Эльбрус</h2>
-              <button class="element__button-heart" type="button" aria-label="Активирует знак сердечко - понравилось"></button>
-            </div>
-          </article>
-        </li>
-        <li class="grid__list-cell">
-          <article class="element">
-            <img  class="element__image" src="./images/kirill-pershin-1556355-unsplash.jpg" alt="Домбай">
-            <div class="element__footer">
-              <h2 class="element__title">Домбай</h2>
-              <button class="element__button-heart" type="button" aria-label="Активирует знак сердечко - понравилось"></button>
-            </div>
-          </article>
-        </li>
-        <li class="grid__list-cell">
-          <article class="element">
-            <img  class="element__image" src="./images/kirill-pershin-1088404-unsplash.jpg" alt="Карачаево-Черкесия">
-            <div class="element__footer">
-              <h2 class="element__title">Карачаево-Черкесия</h2>
-              <button  class="element__button-heart" type="button" aria-label="Активирует знак сердечко - понравилось"></button>
-            </div>
-          </article>
-        </li>
-      </ul>
-    </section>
+        <button class="profile__add-botton" type="button" aria-label="Добаляет каточку"></button>
+      </section>
+      
+      <section class="grid" aria-label="Секция содержащая карточки мест">
+        <ul class="grid__list"></ul>
+      </section>
 
-  </main>
+    </main>
   
-  <footer class="footer">
-      <p lang="en"  class="footer__copyright">&copy;2022 Mesto Russia</p>
-  </footer>
+    <footer class="footer">
+        <p lang="en"  class="footer__copyright">&copy;2022 Mesto Russia</p>
+    </footer>
 
-  <div class="popup popup_opened">
-    <div class="popup__container">
-      <h2 class="popup__header">Редактировать профиль</h2>
-      <button class="popup__button-close" type="button" aria-label="Закрывает окно редактирования профиля"></button>
-      <form class="popup__form" name="profileEditing">
-        <input class="popup__text popup__text_edit_name" type="text" name="name" value="Ваше имя" placeholder="Ваше имя">
-        <input class="popup__text popup__text_edit_career" type="text" name="career"  value="Ваш род занятий" placeholder="Ваше род занятий">
-        <button class="popup__button" type="submit" aria-label="Отправлет отредактированные данные на сервер">Сохранить</button>
-      </form>
+    <template id="myTemplateOne">
+      <li class="grid__list-cell">
+        <article class="element">
+          <img class="element__image" src="" alt="">
+          <button class="element__delet-button" type="button" aria-label="Удаляет карточку"></button>
+          <div class="element__footer">
+            <h2 class="element__title"></h2>
+            <button class="element__button-heart " type="button" aria-label="Активирует знак сердечко - понравилось"></button>
+          </div>
+        </article>
+      </li>
+    </template>
+
+    <div class="popup "> <!--popup_opened-->
+      <div class="popup__container">
+        <h2 class="popup__header">Редактировать профиль</h2>
+        <button class="popup__button-close" type="button" aria-label="Закрывает окно редактирования профиля"></button>
+        <form class="popup__form" name="profileEditing">
+          <input class="popup__text popup__text_edit_name" type="text" name="name" value="" placeholder="Ваше имя">
+          <input class="popup__text popup__text_edit_career" type="text" name="career"  value="" placeholder="Ваше род занятий">
+          <button class="popup__button" type="submit" aria-label="Отправлет отредактированные данные на сервер">Сохранить</button>
+        </form>
+      </div>
     </div>
-  </div>
+
+    <div class="popup-place">   <!--popup-place_opened-->
+      <div class="popup-place__container">
+        <h2 class="popup-place__header">Новое место</h2>
+        <button class="popup-place__button-close" type="button" aria-label="Закрывает окно добавления карточки"></button>
+        <form class="popup-place__form" name="placeEditing">
+          <input class="popup-place__text popup-place__text_edit_title" type="text" name="title" value="" placeholder="Название">
+          <input class="popup-place__text popup-place__text_edit_link" type="text" name="link"  value="" placeholder="Ссылка на картинку">
+          <button class="popup-place__button" type="submit" aria-label="Вносит карточку на сайт, на первое место">Сохранить</button>
+        </form>
+      </div>
+    </div>
+    <div class="popup-image">  <!--popup-image_opened-->
+      <div class="popup-image__container">
+        <button class="popup-image__button-close" type="button" aria-label="Закрывает изображение"></button>
+        <img class="popup-image__image"   src="https://i.pinimg.com/originals/b5/4c/96/b54c966995dabd4adcf6093b4e4c1789.jpg" alt="Наименование места">
+        <p class="popup-image__subtitle"></p>
+      </div>
+    </div>
+
+    <script src="js/script.js"></script>
 
   </body>
 </html>
+
