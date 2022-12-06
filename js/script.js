@@ -2,23 +2,30 @@
 const formPlaceElement = document.querySelector('.popup-place__form');  // принимает элемент формы из попап Новое место
 const openingPopupImg = document.querySelector('.popup-image');   // принимает элемент попап открытия изображения
 const showImg = document.querySelector('.popup-image__image');  // принимает элемент в котром хранится изображение места
-const closingPopupImg = document.querySelector('.popup-image__button-close'); // принимает кнопку - закрытие попап с изображением
+const closingPopupImg = document.querySelector('.popup-image__close'); // принимает кнопку - закрытие попап с изображением
 const showPopupSubtitle = document.querySelector('.popup-image__subtitle');  // принимает элемент - подпись (название места ) в попап изображения
 const gridTemplateCell = document.querySelector('#myTemplateOne').content; // принимает клон элемента #myTemplateOne - ячейка сетки
 const existGrid = document.querySelector('.grid__list'); // принимает обертку под сетку из карточек
 const inputCardLink = formPlaceElement.querySelector('.popup-place__text_edit_link'); // принимает поле ссылки на кртинку в попап редактирования карточки
 const inputCardTitle = formPlaceElement.querySelector('.popup-place__text_edit_title'); // принимает поле название места в попап редактирования карточки
 const profileOpenBotton = document.querySelector('.profile__edit-botton'); // принимает элемент - кнопка редактирования формы личных данных
-const profileCloseBotton = document.querySelector('.popup__button-close'); // принимает кнопку "крестик" - закрытие формы личных данных
+const profileCloseBotton = document.querySelector('.popup-profile__close'); // принимает кнопку "крестик" - закрытие формы личных данных
 const formElement = document.querySelector('.popup__form');  // принимает форму из попап 
 const nameInput = formElement.querySelector('.popup__text_edit_name'); // принимает элемент с полем редактирования имени
 const jobInput = formElement.querySelector('.popup__text_edit_career'); // принимает элемент с полем редактирования рода занятий
 const profileTitle = document.querySelector('.profile__title');  // принимает элемент с текстом имени
 const profileSubTitle = document.querySelector('.profile__subtitle'); // принимает элемент с текстом рода занятий
 const placeOpenButton = document.querySelector('.profile__add-botton'); // принимает кнопку  открытия формы редактирования личных данных
-const popupSence = document.querySelector('.popup-place'); // принимает элемент попап "Новое место" для закрытия или открытия в зависимотси от наличия или отсутствия модификатора
-const placeCloseButton = document.querySelector('.popup-place__button-close'); // принимает кнопку "крестик" - закрытие формы "Новое место"
+const placeCloseButton = document.querySelector('.popup-place__close'); // принимает кнопку "крестик" - закрытие формы "Новое место"
 
+// созданные после ревью
+const popup = document.querySelectorAll('.popup');  
+const profilePopup = document.querySelector('.popup-profile');
+const placePopup = document.querySelector('.popup-place');
+
+const closeButtons = document.querySelectorAll('.popup__close'); // ПЕРЕМЕННАЯ СОЗДАНА ПОЛНОСТЬЮ ИСХОДЯ ИЗ ИДЕИ ревьюера!!!!!
+
+// массив карточек
 const initialCards = [
     {
       name: 'Архыз',
@@ -46,96 +53,112 @@ const initialCards = [
     },
   
   ];
- 
-  // Функция создающая карточку
 
-  function сreateGridCell(link, name){
-    const myGridCell = gridTemplateCell.querySelector('.grid__list-cell').cloneNode(true); 
-    myGridCell.querySelector('.element__image').src = link;   
-    myGridCell.querySelector('.element__image').alt = name;   
-    myGridCell.querySelector('.element__title').textContent = name;
-    existGrid.prepend(myGridCell);                                          
-    const dellButtton = myGridCell.querySelector('.element__delet-button');
-    dellButtton.addEventListener('click', function(evt){
+
+
+
+  
+
+ 
+
+
+  // ----  Функции созданнные после ревью, по замечаниям ревьюера --- //
+
+  // Функция открытия popup
+  function openPopup(popup) {
+    popup.classList.add('popup_opened');
+  };
+
+  // Функция закрытия popup
+  function closePopup(popup) {
+    popup.classList.remove('popup_opened');
+  };
+
+  // Функция удаления карточки
+  function removeCard(evt){
     evt.target.closest('.grid__list-cell').remove();
-    })
-    const heartButton = myGridCell.querySelector('.element__button-heart');
-    let myClickCounter = 0;
-    heartButton.addEventListener('click', function(evt){
-      myClickCounter++;
-    if (myClickCounter % 2 !== 0){
-      heartButton.classList.add ('element__button-heart_dark');
-      };
-    if (myClickCounter % 2 == 0){
-      heartButton.classList.remove ('element__button-heart_dark');
+  };
+  
+  // Функция отмечающая сердечко
+  function markHeart(evt){
+    evt.target.classList.toggle('element__button-heart_dark');
+  };
+  
+  // Функция открывающая popup изображения
+  function openImgPopup(evt){
+    showImg.src = evt.target.src;
+    showImg.alt = evt.target.alt;
+    showPopupSubtitle.textContent = evt.target.alt;
+    openPopup(openingPopupImg);
     };
-    });
-    const openImg = myGridCell.querySelector('.element__image');
-      openImg.addEventListener('click', function(evt){
-      openingPopupImg.classList.add('popup-image_opened');
-      showImg.src = link;
-      showImg.alt = name;
-      showPopupSubtitle.textContent = name;
-    });
-  };
-
- 
-// Функция создает сетку из карточек массива initialCards 
   
-  function сreateGrid(){
-    initialCards.slice().reverse()    // Чтобы в противоположную сторону заполнял сетку
-      .forEach(function(item) {
-        сreateGridCell(item.link, item.name);
-      });
-  };
-  сreateGrid();  
- 
-// Скрипт закрывает попап изображения
+
+  // --- Скрипты созданные по замечаниям ревьюера 
   
-  closingPopupImg.addEventListener('click', function(evt){
-    openingPopupImg.classList.remove('popup-image_opened'); 
+  // Открытие popup профиля 
+  profileOpenBotton.addEventListener('click', function(evt) {
+    nameInput.value = profileTitle.textContent;
+    jobInput.value = profileSubTitle.textContent;
+    openPopup(profilePopup);
+  });
+   
+  // Открытие попап карточки 
+  placeOpenButton.addEventListener('click', function(evt){
+    openPopup(placePopup);
   });
 
-// скрипт выполняет 
-// 1. Открытие и закрытие модального окна редактирования личных данных
-// 2. Редактирирование полей в форме - о себе 
-
-  profileOpenBotton.addEventListener('click', function(evt){
-      popupOpen = document.querySelector('.popup');
-      popupOpen.classList.add('popup_opened');
+    // Закрывает любые поппапы по крестику 
+    // Создано по идее ревьюера 
+    // Михаил, спасибо вам огромное!!! Просто оченьт круто и крайне элегантно. Мне для работы в будущем и как премер красивых решений - ПРОСТО САМЫЙ ТО!!!!
+    closeButtons.forEach((button) => {
+      const popup = button.closest('.popup');
+    button.addEventListener('click', () => closePopup(popup));
   });
+  
+  
+  // Функция создающая карточку  /// поправлено многократно после замечаний ревьюера
+  function createCard(name, link){
+    const cardElement = gridTemplateCell.querySelector('.grid__list-cell').cloneNode(true); 
+    cardElement.querySelector('.element__image').src = link;   
+    cardElement.querySelector('.element__image').alt = name;   
+    cardElement.querySelector('.element__title').textContent = name;                                       
+    cardElement.querySelector('.element__delet-button').addEventListener('click', removeCard);
+    cardElement.querySelector('.element__button-heart').addEventListener('click', markHeart);
+    cardElement.querySelector('.element__image').addEventListener('click', openImgPopup);
+    return cardElement;
+  };
+  
+  
+// Создание первой сетки карточек // исправлено по замечанию ревьюера
 
-  profileCloseBotton.addEventListener('click', function(evt){
-      popupOpen.classList.remove('popup_opened');
-  });
+initialCards.forEach(function(element){
+  const newCard = createCard(element.name, element.link); 
+  addCard(newCard, existGrid);
+})
 
+// Добавление карточки в сетку // создано по замечанию ревюера 
+function addCard(card, box) {
+  box.prepend(card);
+} 
+
+// Обработчик submit в редактировании профиля // изменено согласно замечаний ревьюера
   function handleFormSubmit(evt) {
       evt.preventDefault(); 
-
       profileTitle.textContent = nameInput.value;
       profileSubTitle.textContent = jobInput.value;
-    
+      closePopup(profilePopup);
+      evt.target.reset();
   };
 
   formElement.addEventListener('submit', handleFormSubmit);
 
-// скрипт открывает и закрывает форму добаления карточки 
-
-  placeOpenButton.addEventListener('click', function(etv){
-    popupSence.classList.add('popup-place_opened');
-  });
-
-  function placePopupClose(){
-  placeCloseButton.addEventListener('click', function(etv){
-      popupSence.classList.remove('popup-place_opened');
-  });
-  }
-  placePopupClose();
-
+// Обработчик submit в добавлени карточки  // изменено согласно замечаний ревьюера
   function handleFormSubmitPlace(evt) {
     evt.preventDefault(); 
-    сreateGridCell (inputCardLink.value, inputCardTitle.value);
-    popupSence.classList.remove('popup-place_opened');
+    const newCard = createCard(inputCardTitle.value, inputCardLink.value);
+    addCard(newCard, existGrid);
+    closePopup(placePopup);
+    evt.target.reset();
   };
 
   formPlaceElement.addEventListener('submit', handleFormSubmitPlace);
