@@ -55,32 +55,32 @@
       </li>
     </template>
 
-    <div class="popup popup-profile"> <!--Исправлено по замечанию ревьюера - В каждом попапе должен быть класс popup,  а рядом с ним через пробел можно указать еще один класс для точного поиска его в DOM: popup profile-popup-->
+    <div class="popup popup-profile">
       <div class="popup__container">
         <h2 class="popup__header">Редактировать профиль</h2>
-        <button class="popup__close popup-profile__close" type="button" aria-label="Закрывает окно редактирования профиля"></button> <!--Исправлено по замечанию ревьюера - У каждого крестика должен быть общий класс, например popup__close-->
+        <button class="popup__close popup-profile__close" type="button" aria-label="Закрывает окно редактирования профиля"></button>
         <form class="popup__form" name="profileEditing">
           <input class="popup__text popup__text_edit_name" type="text" name="name" value="" placeholder="Ваше имя" required minlength="2" maxlength="40">
-          <input class="popup__text popup__text_edit_career" type="text" name="career"  value="" placeholder="Ваше род занятий"  required minlength="2" maxlength="200" >
-          <button class="popup__button popup-profile__button" type="submit" aria-label="Отправлет отредактированные данные на сервер">Сохранить</button> <!-- Исправлено по замечанию ревьюера - popup__button - для стилей у всех поппапов у кого есть submit и отдельный селектор для идентификации кнопки-->
+          <input class="popup__text popup__text_edit_career" type="text" name="career"  value="" placeholder="Ваше род занятий" required minlength="2" maxlength="200">
+          <button class="popup__button popup-profile__button" type="submit" aria-label="Отправлет отредактированные данные на сервер">Сохранить</button>
         </form>
       </div>
     </div>
 
-    <div class="popup popup-place">  <!--Исправлено по замечанию ревьюера - В каждом попапе должен быть класс popup,  а рядом с ним через пробел можно указать еще один класс для точного поиска его в DOM: popup profile-popup-->
+    <div class="popup popup-place">  
       <div class="popup-place__container">
         <h2 class="popup-place__header">Новое место</h2>
-        <button class="popup__close popup-place__close" type="button" aria-label="Закрывает окно добавления карточки"></button>  <!--Исправлено по замечанию ревьюера - У каждого крестика должен быть общий класс, например popup__close-->
-        <form class="popup__form popup-place__form" name="placeEditing"> <!--Исправлено по замечанию ревьюера - Формам создан общий класс стилей, дороднительный класс для идентификации формы в DOM-->
-          <input class="popup__text popup-place__text_edit_title" type="text" name="title" value="" placeholder="Название"> <!-- Исправлено по замечани ю ревьюера - всем инпутам создан общий класс стилей popup__text, а класы модификаторов прописаны для идентификации поля в DOM-->
+        <button class="popup__close popup-place__close" type="button" aria-label="Закрывает окно добавления карточки"></button> 
+        <form class="popup__form popup-place__form" name="placeEditing">
+          <input class="popup__text popup-place__text_edit_title" type="text" name="title" value="" placeholder="Название"> 
           <input class="popup__text popup-place__text_edit_link" type="text" name="link"  value="" placeholder="Ссылка на картинку">
-          <button class="popup__button popup-place__button" type="submit" aria-label="Вносит карточку на сайт, на первое место">Сохранить</button> <!-- Исправлено по замечанию ревьюера - popup__button - для стилей у всех поппапов у кого есть submit и отдельный селектор для идентификации кнопки-->
+          <button class="popup__button popup-place__button" type="submit" aria-label="Вносит карточку на сайт, на первое место">Сохранить</button>
         </form>
       </div>
     </div>
-    <div class="popup popup-image">  <!--popup-image_opened--> <!--Исправлено по замечанию ревьюера - В каждом попапе должен быть класс popup,  а рядом с ним через пробел можно указать еще один класс для точного поиска его в DOM: popup profile-popup-->
+    <div class="popup popup-image">
       <div class="popup-image__container">
-        <button class="popup__close popup-image__close" type="button" aria-label="Закрывает изображение"></button>  <!--Исправлено по замечанию ревьюера - У каждого крестика должен быть общий класс, например popup__close-->
+        <button class="popup__close popup-image__close" type="button" aria-label="Закрывает изображение"></button> 
         <img class="popup-image__image"   src="https://i.pinimg.com/originals/b5/4c/96/b54c966995dabd4adcf6093b4e4c1789.jpg" alt="">
         <p class="popup-image__subtitle"></p>
       </div>
