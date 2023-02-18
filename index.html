@@ -60,8 +60,8 @@
         <h2 class="popup__header">Редактировать профиль</h2>
         <button class="popup__close popup-profile__close" type="button" aria-label="Закрывает окно редактирования профиля"></button> <!--Исправлено по замечанию ревьюера - У каждого крестика должен быть общий класс, например popup__close-->
         <form class="popup__form" name="profileEditing">
-          <input class="popup__text popup__text_edit_name" type="text" name="name" value="" placeholder="Ваше имя">
-          <input class="popup__text popup__text_edit_career" type="text" name="career"  value="" placeholder="Ваше род занятий">
+          <input class="popup__text popup__text_edit_name" type="text" name="name" value="" placeholder="Ваше имя" required minlength="2" maxlength="40">
+          <input class="popup__text popup__text_edit_career" type="text" name="career"  value="" placeholder="Ваше род занятий"  required minlength="2" maxlength="200" >
           <button class="popup__button popup-profile__button" type="submit" aria-label="Отправлет отредактированные данные на сервер">Сохранить</button> <!-- Исправлено по замечанию ревьюера - popup__button - для стилей у всех поппапов у кого есть submit и отдельный селектор для идентификации кнопки-->
         </form>
       </div>
