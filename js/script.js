@@ -111,16 +111,16 @@ const hideError = (formElement, inputElement) => {
 
   // создаем функцию которая будет проверять (валидировать поле ввода)
   
-  const checkInputValid = () => {
-    if (!formInput.validity.valid) {
-      showError(form, formInput, formInput.validationMessage);
+  const checkInputValid = (formElement, inputElement) => {
+    if (!inputElement.validity.valid) {
+      showError(formElement, inputElement, inputElement.validationMessage);
     } else {
-      hideError(form, formInput);
+      hideError(formElement, inputElement);
     };
   };
 
   formInput.addEventListener('input', function() {
-    checkInputValid();
+    checkInputValid(form, formInput);
   });
 
   // formInputName.addEventListener('input', function(evt) {
