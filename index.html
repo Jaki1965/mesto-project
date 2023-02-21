@@ -60,7 +60,19 @@
         <h2 class="popup__header">Редактировать профиль</h2>
         <button class="popup__close popup-profile__close" type="button" aria-label="Закрывает окно редактирования профиля"></button>
         <form class="popup__form" name="profileEditing">
-          <input class="popup__text popup__text_edit_name" type="text" name="name" value="" placeholder="Ваше имя" required minlength="2" maxlength="40">
+          <input 
+          id="popup-text-name" 
+          class="popup__text popup__text_edit_name" 
+          type="text" 
+          name="name" 
+          pattern="^[a-zA-Zа-яА-ЯёЁ0-9\s\-]+$" 
+          value="" 
+          placeholder="Ваше имя" 
+          required 
+          minlength="2" 
+          maxlength="40" 
+          data-name-error="Разрешены толко: латинские буквы, кириллица, пробел и дефис">
+          <span class="popup-text-name-error"></span>
           <input class="popup__text popup__text_edit_career" type="text" name="career"  value="" placeholder="Ваше род занятий" required minlength="2" maxlength="200">
           <button class="popup__button popup-profile__button" type="submit" aria-label="Отправлет отредактированные данные на сервер">Сохранить</button>
         </form>
