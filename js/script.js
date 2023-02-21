@@ -26,15 +26,23 @@ const placePopup = document.querySelector('.popup-place');
 const closeButtons = document.querySelectorAll('.popup__close'); // ПЕРЕМЕННАЯ СОЗДАНА ПОЛНОСТЬЮ ИСХОДЯ ИЗ ИДЕИ ревьюера!!!!!
 
 // переменные связанные с валидацией форм
-const nameInputElement = formElement.querySelector('.popup__text'); 
-const nameInputError = formElement.querySelector(`.${nameInputElement.id}-error`); // выбор элемента ошибки в форме Редактирование профиля на основе уникального класса // не понял зачем так сложно
-const formProfile = document.querySelector('[name="profileEditing"]'); // принимает форму в popup Редактирование профиля 
+// const form = formElement.querySelector('.popup__text'); 
+const formElementCheck = document.querySelector('.popup__form');
+const inputElement = formElementCheck.querySelector('.popup__text'); // выбор валидируемого поля ввода через id  // не понял зачем так сложно
+// const form = document.querySelector('[name="profileEditing"]'); // принимает форму в popup Редактирование профиля 
 
 
-// console.log(formProfile);
-console.log(nameInputElement);
-// console.log(nameInputElement.id);
-// console.log(nameInputError);
+
+const formError = formElementCheck.querySelector(`.${inputElement.id}-error`)
+
+
+console.log(formElementCheck);
+console.log(inputElement);
+console.log(formError);
+// console.log(formError.textContent);
+
+
+
 
 // массив карточек
 const initialCards = [
@@ -67,54 +75,43 @@ const initialCards = [
 
  // ___________ ВАЛИДАЦИЯ ФОРМЫ РЕДАКТИРОВАТЬ ПРОФИЛЬ _____________________ //
  
+ // ___________ Сщзжажаим две функции - показать ошибку и - спрятать ошибку 
+ // input - поле ввода (const formInputName = formElement.querySelector('#popup-text-name'); // выбор валидируемого поля ввода через id )
 
-
-// ___________ создадим две функции 1. Показывает сообщение об ошибке - showInputError, 2. Скрывает сообщение об ошибке hideInputError 
-
-const showInputError = (formElementCheck, inputElement, errorMessage) => {
-  const errorElement = formElementCheck.querySelector(`.${inputElement.id}-error`);
-  errorElement.classList.add('popup__text_type_active'); // 
-  errorElement.textContent = errorMessage;               // Обращение к браузерному сообщению
-};
-
-  
-const hideInputError = (formElementCheck, inputElement) => {
-  const errorElement = formElementCheck.querySelector(`.${inputElement.id}-error`);
-  errorElement.classList.remove('popup__text_type_active'); // 
-  errorElement.textContent = "";                           // очистим браузерное сообщение
-
-};
-
-// ______________ создадим функцию, которая будет проверять валидность поля ввода nameInput
-
-
-// console.log(formProfile, nameInputElement, nameInputElement.dataset.nameError);
-
-const checkValidInputName = (formElementCheck, inputElement) => {
-  // if(inputElement.validity.patternMismatch){
-  //     inputElement.setCustomValidity(inputElement.dataset.nameError);
-  // } else {
-  //     inputElement.setCustomValidity('');
-  // };
-
-
-  if(!inputElement.validity.valid) {
-    showInputError(formElementCheck, inputElement, inputElement.validationMessage); // В зависимости от характера ошибки будет выводиться наше сообщение или браузерное
-  } else {
-    hideInputError(formElementCheck, inputElement); 
+  const showError = (input, errorMessage) => {
+    input.classList.add('popup__text_type_error');
+    formError.textContent = errorMessage;
+    formError.classList.add('popup__text_type_active');
   };
 
+  const hideError = (input) => {
+    input.classList.remove('popup__text_type_error');
+    formError.textContent = '';
+    formError.classList.add('popup__text_type_active');
+  };
+
+  // создаем функцию которая будет проверять (валидировать поле ввода)
   
-};
+  const checkInputValid = () => {
+    if (!inputElement.validity.valid) {
+      showError(inputElement, inputElement.validationMessage);
+    } else {
+      hideError(inputElement);
+    };
+  };
 
-  
-  nameInputElement.addEventListener('input', checkValidInputName(formProfile, nameInputElement)); // вызываем функцию валидации на событие input в поле введения имени
+  inputElement.addEventListener('input', function() {
+    checkInputValid();
+  });
 
-
-
-
-
-
+  // formInputName.addEventListener('input', function(evt) {
+  //   if (!evt.target.validity.valid){
+  //     showError(formInputName);
+  //   } else {
+  //     hideError(formInputName);
+  //   };
+  //   console.log(evt.target.validity.valid);
+  // });
 
 
   // ----  Функции созданнные после ревью, по замечаниям ревьюера --- //

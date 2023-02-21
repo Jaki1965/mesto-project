@@ -59,7 +59,7 @@
       <div class="popup__container">
         <h2 class="popup__header">Редактировать профиль</h2>
         <button class="popup__close popup-profile__close" type="button" aria-label="Закрывает окно редактирования профиля"></button>
-        <form class="popup__form" name="profileEditing">
+        <form class="popup__form" name="profileEditing" novalidate>
           <input 
           id="popup-text-name" 
           class="popup__text popup__text_edit_name" 
@@ -72,8 +72,20 @@
           minlength="2" 
           maxlength="40" 
           data-name-error="Разрешены толко: латинские буквы, кириллица, пробел и дефис">
-          <span class="popup-text-name-error"></span>
-          <input class="popup__text popup__text_edit_career" type="text" name="career"  value="" placeholder="Ваше род занятий" required minlength="2" maxlength="200">
+          <span class="popup__text-name-error popup-text-name-error">ОШИБКА ИМЕНИ</span>
+          <input 
+          id="popup-text-career"
+          class="popup__text popup__text_edit_career" 
+          type="text" 
+          name="career" 
+          pattern="^[a-zA-Zа-яА-ЯёЁ0-9\s\-]+$"
+          value="" 
+          placeholder="Ваше род занятий"
+          required 
+          minlength="2" 
+          maxlength="200" 
+          data-name-error="Разрешены толко: латинские буквы, кириллица, пробел и дефис">
+          <span class="popup__text-career-error popup-text-career-error">ОШИБКА КАРЬЕРЫ</span>
           <button class="popup__button popup-profile__button" type="submit" aria-label="Отправлет отредактированные данные на сервер">Сохранить</button>
         </form>
       </div>
@@ -83,7 +95,7 @@
       <div class="popup-place__container">
         <h2 class="popup-place__header">Новое место</h2>
         <button class="popup__close popup-place__close" type="button" aria-label="Закрывает окно добавления карточки"></button> 
-        <form class="popup__form popup-place__form" name="placeEditing">
+        <form class="popup__form popup-place__form" name="placeEditing" novalidate>
           <input class="popup__text popup-place__text_edit_title" type="text" name="title" value="" placeholder="Название"> 
           <input class="popup__text popup-place__text_edit_link" type="text" name="link"  value="" placeholder="Ссылка на картинку">
           <button class="popup__button popup-place__button" type="submit" aria-label="Вносит карточку на сайт, на первое место">Сохранить</button>
