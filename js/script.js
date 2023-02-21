@@ -27,19 +27,19 @@ const closeButtons = document.querySelectorAll('.popup__close'); // ПЕРЕМЕ
 
 // переменные связанные с валидацией форм
 // const form = formElement.querySelector('.popup__text'); 
-const formElementCheck = document.querySelector('.popup__form');
-const inputElement = formElementCheck.querySelector('.popup__text'); // выбор валидируемого поля ввода через id  // не понял зачем так сложно
+const form = document.querySelector('.popup__form');
+const formInput = form.querySelector('.popup__text'); // выбор валидируемого поля ввода через id  // не понял зачем так сложно
 // const form = document.querySelector('[name="profileEditing"]'); // принимает форму в popup Редактирование профиля 
 
 
 
-const formError = formElementCheck.querySelector(`.${inputElement.id}-error`)
+const formError = form.querySelector(`.${formInput.id}-error`);
 
 
-console.log(formElementCheck);
-console.log(inputElement);
+console.log(form);
+console.log(formInput);
 console.log(formError);
-// console.log(formError.textContent);
+console.log(formError.textContent);
 
 
 
@@ -78,29 +78,48 @@ const initialCards = [
  // ___________ Сщзжажаим две функции - показать ошибку и - спрятать ошибку 
  // input - поле ввода (const formInputName = formElement.querySelector('#popup-text-name'); // выбор валидируемого поля ввода через id )
 
-  const showError = (input, errorMessage) => {
-    input.classList.add('popup__text_type_error');
-    formError.textContent = errorMessage;
-    formError.classList.add('popup__text_type_active');
-  };
+ const showError = (formElement, inputElement, errorMessage) => {
+  const errorElement = formElement.querySelector(`.${inputElement.id}-error`);
+  inputElement.classList.add('popup__text_type_error');
+  errorElement.textContent = errorMessage;
+  errorElement.classList.add('popup__text_type_active');
+};
 
-  const hideError = (input) => {
-    input.classList.remove('popup__text_type_error');
-    formError.textContent = '';
-    formError.classList.add('popup__text_type_active');
-  };
+const hideError = (formElement, inputElement) => {
+  const errorElement = formElement.querySelector(`.${inputElement.id}-error`);
+  inputElement.classList.remove('popup__text_type_error');
+  errorElement.classList.remove('popup__text_type_active');
+  errorElement.textContent = '';
+};
+
+
+
+  // const showError = (formElement, inputElement, errorMessage) => {
+  //   const errorElement = formElement.querySelector(`.${inputElement.id}-error`);
+  //   inputElement.classList.add('popup__text_type_error');
+  //   errorElement.textContent = errorMessage;
+  //   errorElement.classList.add('popup__text_type_active');
+  // };
+
+  // const hideError = (formElement, inputElement) => {
+  //   const errorElement = formElement.querySelector(`.${inputElement.id}-error`);
+  //   // const errorElement = formElementCheck.querySelector(`.${inputElement.id}-error`);
+  //   inputElement.classList.remove('popup__text_type_error');
+  //   errorElement.classList.add('popup__text_type_active');
+  //   errorElement.textContent = '';
+  // };
 
   // создаем функцию которая будет проверять (валидировать поле ввода)
   
   const checkInputValid = () => {
-    if (!inputElement.validity.valid) {
-      showError(inputElement, inputElement.validationMessage);
+    if (!formInput.validity.valid) {
+      showError(form, formInput, formInput.validationMessage);
     } else {
-      hideError(inputElement);
+      hideError(form, formInput);
     };
   };
 
-  inputElement.addEventListener('input', function() {
+  formInput.addEventListener('input', function() {
     checkInputValid();
   });
 
