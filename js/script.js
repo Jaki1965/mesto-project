@@ -123,15 +123,20 @@ const hideError = (formElement, inputElement) => {
     checkInputValid(form, formInput);
   });
 
-  // formInputName.addEventListener('input', function(evt) {
-  //   if (!evt.target.validity.valid){
-  //     showError(formInputName);
-  //   } else {
-  //     hideError(formInputName);
-  //   };
-  //   console.log(evt.target.validity.valid);
-  // });
 
+  // создаем функцию котрора будет навешивать слушателей всем полям формы
+
+  function setEventListener(formElement) {
+    const inputList = Array.from(formElement.querySelectorAll('.popup__text')); // сoздает массив из полей ввода формы 
+    inputList.forEach((inputElement) => {              // обходим все элементы (inputElement) формы (ormElement) и посредством функции checkInputValid(formElement, inputElement) навешиваем им слушателей
+      inputElement.addEventListener('input', () => {
+        checkInputValid(formElement, inputElement);    // после того как навешали слушателя - валидируем форму 
+      });                           
+    });
+  };
+
+  setEventListener(form);    // пока форму берем из глобальной области видимости, позже это измениться 
+  
 
   // ----  Функции созданнные после ревью, по замечаниям ревьюера --- //
 
