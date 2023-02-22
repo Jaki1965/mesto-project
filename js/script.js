@@ -86,7 +86,13 @@ const hideError = (formElement, inputElement) => {
   // создаем функцию которая будет проверять (валидировать поле ввода)
   
   const checkInputValid = (formElement, inputElement) => {
-    if (!inputElement.validity.valid) {
+    if (inputElement.validity.patternMismatch) {                          // Если ошибка возникает из-за несоответсвия атрибуту pattern, то свойство patternMismatch -> выдаст true. 
+      inputElement.setCustomValidity(inputElement.dataset.errorMessage);  // в случае true метод setCustomValidity позволит вывести в отношении выбранного поля наше сообщение (любую строку) или из атрибута data. 
+    } else {                                                              
+      inputElement.setCustomValidity("");                                 // если методу отдать пустую строку, то будут выводиться стандартные сообщения
+    }    
+  
+    if (!inputElement.validity.valid) {``
       showError(formElement, inputElement, inputElement.validationMessage);  // если поле не валидно -> показать ошибку
     } else {
       hideError(formElement, inputElement);                                  // иначе -> спрятать ошибку
