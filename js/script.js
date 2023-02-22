@@ -67,8 +67,7 @@ const initialCards = [
 
  // ___________ ВАЛИДАЦИЯ ФОРМЫ РЕДАКТИРОВАТЬ ПРОФИЛЬ _____________________ //
  
- // ___________ Сщзжажаим две функции - показать ошибку и - спрятать ошибку 
- // input - поле ввода (const formInputName = formElement.querySelector('#popup-text-name'); // выбор валидируемого поля ввода через id )
+ // Создадим две функции - показать ошибку и - спрятать ошибку 
 
  const showError = (formElement, inputElement, errorMessage) => {
   const errorElement = formElement.querySelector(`.${inputElement.id}-error`);
@@ -84,23 +83,6 @@ const hideError = (formElement, inputElement) => {
   errorElement.textContent = '';
 };
 
-
-
-  // const showError = (formElement, inputElement, errorMessage) => {
-  //   const errorElement = formElement.querySelector(`.${inputElement.id}-error`);
-  //   inputElement.classList.add('popup__text_type_error');
-  //   errorElement.textContent = errorMessage;
-  //   errorElement.classList.add('popup__text_type_active');
-  // };
-
-  // const hideError = (formElement, inputElement) => {
-  //   const errorElement = formElement.querySelector(`.${inputElement.id}-error`);
-  //   // const errorElement = formElementCheck.querySelector(`.${inputElement.id}-error`);
-  //   inputElement.classList.remove('popup__text_type_error');
-  //   errorElement.classList.add('popup__text_type_active');
-  //   errorElement.textContent = '';
-  // };
-
   // создаем функцию которая будет проверять (валидировать поле ввода)
   
   const checkInputValid = (formElement, inputElement) => {
@@ -111,23 +93,25 @@ const hideError = (formElement, inputElement) => {
     };
   };
 
-  // formInput.addEventListener('input', function() {
-  //   checkInputValid(form, formInput);
-  // });
-
 
   // создаем функцию котрора будет навешивать слушателей всем полям формы
 
   function setEventListener(formElement) {
     const inputList = Array.from(formElement.querySelectorAll('.popup__text')); // сoздает массив из полей ввода формы 
+    const buttonElement = formElement.querySelector('.popup__button'); // найдем кнопку, которую в случае невалидности полей нужно дезактивировать
+    // toggleButtonState(inputList, buttonElement);   // вызываем функцию, которая активирует/дезактивирует кнопку при первой загрузке страницы, чтобы кнопка была не активной с самого начала
+    // console.log(buttonElement);
+    // console.log(inputList);
     inputList.forEach((inputElement) => {              // обходим все элементы (inputElement) формы (ormElement) и посредством функции checkInputValid(formElement, inputElement) навешиваем им слушателей
       inputElement.addEventListener('input', () => {
         checkInputValid(formElement, inputElement);    // после того как навешали слушателя - валидируем форму 
+        toggleButtonState(inputList, buttonElement);   // вызываем функцию, которая активирует/дезактивирует кнопку 
       });                           
     });
   };
 
-  
+
+ 
   // Создадим функцию, которая обойдет все формы, навешает им слушателя submit и внутри себя произведет поделючение слушателей и валидайию через setEventListener(formElement)
 
   const enableValidation = () => {
@@ -142,10 +126,27 @@ const hideError = (formElement, inputElement) => {
 
   enableValidation();  // Вызывем функцию, которую создали. Глобальные переменные объявленные ранее (касающиеся валидации полей) тереь не нужны. 
 
+  // создаем функцию, которая будет обходить список полей методом some и если хоть одно из них не валидно выдавать true 
 
+  const hasInvalidInput = (inputList) => {        
+    return inputList.some((inputElement) => {  // идем по всем полям методом some (этот метод требует внутри себя колл-бэк и возвращает при наличии хотя бы одного совпадения - true)
+      return !inputElement.validity.valid;     // это тот самый колл-бэк для some -> если есть хоть одно не валидное поле, возвращаем - true, если все поля валидны false
+    });
+  }; 
 
+  // Cоздаем функцию, котрая будет активировать и дезактивировать кнопку. Функция будет принимать список валидируемых полей и элемент - кнопку (которую нужно активировать/дезактивироать) 
 
+  const toggleButtonState = (inputList, buttonElement) => {
+    if (hasInvalidInput(inputList)) {                       // если функция hasInvalidInput(inputList) вернула true 
+      buttonElement.disabled = true;                        // у кнопки buttonElement навешиваем свойство disabled = true - отключить
+      buttonElement.classList.add('popup__button_inactive');  // заодно стилизуем саму кнопку, делая ее прозрачной
+    } else {                                                  // иначе 
+      buttonElement.disabled = false;                          // включаем кнопку 
+      buttonElement.classList.remove('popup__button_inactive'); // возвращем кнопке стиль активной
+    };
+  };
 
+  
 
 
 
