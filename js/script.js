@@ -65,7 +65,7 @@ const initialCards = [
   
   ];
 
- // ___________ ВАЛИДАЦИЯ ФОРМЫ РЕДАКТИРОВАТЬ ПРОФИЛЬ _____________________ //
+ // ___________ ВАЛИДАЦИЯ ФОРМ  _____________________ //
  
  // Создадим две функции - показать ошибку и - спрятать ошибку 
 
@@ -93,39 +93,6 @@ const hideError = (formElement, inputElement) => {
     };
   };
 
-
-  // создаем функцию котрора будет навешивать слушателей всем полям формы
-
-  function setEventListener(formElement) {
-    const inputList = Array.from(formElement.querySelectorAll('.popup__text')); // сoздает массив из полей ввода формы 
-    const buttonElement = formElement.querySelector('.popup__button'); // найдем кнопку, которую в случае невалидности полей нужно дезактивировать
-    // toggleButtonState(inputList, buttonElement);   // вызываем функцию, которая активирует/дезактивирует кнопку при первой загрузке страницы, чтобы кнопка была не активной с самого начала
-    // console.log(buttonElement);
-    // console.log(inputList);
-    inputList.forEach((inputElement) => {              // обходим все элементы (inputElement) формы (ormElement) и посредством функции checkInputValid(formElement, inputElement) навешиваем им слушателей
-      inputElement.addEventListener('input', () => {
-        checkInputValid(formElement, inputElement);    // после того как навешали слушателя - валидируем форму 
-        toggleButtonState(inputList, buttonElement);   // вызываем функцию, которая активирует/дезактивирует кнопку 
-      });                           
-    });
-  };
-
-
- 
-  // Создадим функцию, которая обойдет все формы, навешает им слушателя submit и внутри себя произведет поделючение слушателей и валидайию через setEventListener(formElement)
-
-  const enableValidation = () => {
-    const formList = Array.from(document.querySelectorAll('.popup__form'));  // формируем массив (formList) из форм в проекте
-    formList.forEach((formElement) => {                                        // обходим массив форм и работаем с каждым элементом (formElement)
-      formElement.addEventListener('submit', (evt) => {                         // навешиваем каждому полю ввода (formElement) слушателя с событием submit
-        evt.preventDefault();                                                   // отменяем стандартное поведение submit                      
-      });
-      setEventListener(formElement);     // каждому элементу (теперь уже каждой формы) нвешиваем функцию написанную выше - слушатель (input) И валидатор
-    });
-  };
-
-  enableValidation();  // Вызывем функцию, которую создали. Глобальные переменные объявленные ранее (касающиеся валидации полей) тереь не нужны. 
-
   // создаем функцию, которая будет обходить список полей методом some и если хоть одно из них не валидно выдавать true 
 
   const hasInvalidInput = (inputList) => {        
@@ -146,8 +113,36 @@ const hideError = (formElement, inputElement) => {
     };
   };
 
-  
+   
+  // Создадим функцию, которая обойдет все формы, навешает им слушателя submit и внутри себя произведет поделючение слушателей и валидайию через setEventListener(formElement)
 
+  const enableValidation = () => {
+    const formList = Array.from(document.querySelectorAll('.popup__form'));  // формируем массив (formList) из форм в проекте
+    formList.forEach((formElement) => {                                        // обходим массив форм и работаем с каждым элементом (formElement)
+      formElement.addEventListener('submit', (evt) => {                         // навешиваем каждому полю ввода (formElement) слушателя с событием submit
+        evt.preventDefault();                                                   // отменяем стандартное поведение submit                      
+      });
+      setEventListener(formElement);     // каждому элементу (теперь уже каждой формы) нвешиваем функцию написанную выше - слушатель (input) И валидатор
+    });
+  };
+
+  enableValidation();  // Вызывем функцию, которую создали. Глобальные переменные объявленные ранее (касающиеся валидации полей) теперь не нужны. 
+
+  // создаем функцию котрора будет навешивать слушателей всем полям формы
+
+  function setEventListener(formElement) {
+    const inputList = Array.from(formElement.querySelectorAll('.popup__text')); // сoздает массив из полей ввода формы 
+    const buttonElement = formElement.querySelector('.popup__button'); // найдем кнопку, которую в случае невалидности полей нужно дезактивировать
+    toggleButtonState(inputList, buttonElement);   // вызываем функцию, которая активирует/дезактивирует кнопку при первой загрузке страницы, чтобы кнопка была не активной с самого начала
+    inputList.forEach((inputElement) => {              // обходим все элементы (inputElement) формы (ormElement) и посредством функции checkInputValid(formElement, inputElement) навешиваем им слушателей
+      inputElement.addEventListener('input', () => {
+        checkInputValid(formElement, inputElement);    // после того как навешали слушателя - валидируем форму 
+        toggleButtonState(inputList, buttonElement);   // вызываем функцию, которая активирует/дезактивирует кнопку 
+      });                           
+    });
+  };
+
+// ___________________________ БЛОК ВАЛИДАЦИИ ФОРМ ЗАКОНЧЕН ___________________ //
 
 
 
