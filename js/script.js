@@ -107,18 +107,21 @@ const hideError = (formElement, inputElement) => {
     });
   }; 
 
-  // Cоздаем функцию, котрая будет активировать и дезактивировать кнопку. Функция будет принимать список валидируемых полей и элемент - кнопку (которую нужно активировать/дезактивироать) 
+  
 
-  const toggleButtonState = (inputList, buttonElement) => {
-    if (hasInvalidInput(inputList)) {                       // если функция hasInvalidInput(inputList) вернула true 
-      buttonElement.disabled = true;                        // у кнопки buttonElement навешиваем свойство disabled = true - отключить
-      buttonElement.classList.add('popup__button_inactive');  // заодно стилизуем саму кнопку, делая ее прозрачной
-    } else {                                                  // иначе 
-      buttonElement.disabled = false;                          // включаем кнопку 
-      buttonElement.classList.remove('popup__button_inactive'); // возвращем кнопке стиль активной
-    };
+  // создаем функцию котрора будет навешивать слушателей всем полям формы
+
+  function setEventListener(formElement) {
+    const inputList = Array.from(formElement.querySelectorAll('.popup__text')); // сoздает массив из полей ввода формы 
+    const buttonElement = formElement.querySelector('.popup__button'); // найдем кнопку, которую в случае невалидности полей нужно дезактивировать
+    toggleButtonState(inputList, buttonElement);   // вызываем функцию, которая активирует/дезактивирует кнопку при первой загрузке страницы, чтобы кнопка была не активной с самого начала
+    inputList.forEach((inputElement) => {              // обходим все элементы (inputElement) формы (ormElement) и посредством функции checkInputValid(formElement, inputElement) навешиваем им слушателей
+      inputElement.addEventListener('input', () => {
+        checkInputValid(formElement, inputElement);    // после того как навешали слушателя - валидируем форму 
+        toggleButtonState(inputList, buttonElement);   // вызываем функцию, которая активирует/дезактивирует кнопку 
+      });                           
+    });
   };
-
    
   // Создадим функцию, которая обойдет все формы, навешает им слушателя submit и внутри себя произведет поделючение слушателей и валидайию через setEventListener(formElement)
 
@@ -134,19 +137,18 @@ const hideError = (formElement, inputElement) => {
 
   enableValidation();  // Вызывем функцию, которую создали. Глобальные переменные объявленные ранее (касающиеся валидации полей) теперь не нужны. 
 
-  // создаем функцию котрора будет навешивать слушателей всем полям формы
+// Cоздаем функцию, котрая будет активировать и дезактивировать кнопку. Функция будет принимать список валидируемых полей и элемент - кнопку (которую нужно активировать/дезактивироать) 
 
-  function setEventListener(formElement) {
-    const inputList = Array.from(formElement.querySelectorAll('.popup__text')); // сoздает массив из полей ввода формы 
-    const buttonElement = formElement.querySelector('.popup__button'); // найдем кнопку, которую в случае невалидности полей нужно дезактивировать
-    toggleButtonState(inputList, buttonElement);   // вызываем функцию, которая активирует/дезактивирует кнопку при первой загрузке страницы, чтобы кнопка была не активной с самого начала
-    inputList.forEach((inputElement) => {              // обходим все элементы (inputElement) формы (ormElement) и посредством функции checkInputValid(formElement, inputElement) навешиваем им слушателей
-      inputElement.addEventListener('input', () => {
-        checkInputValid(formElement, inputElement);    // после того как навешали слушателя - валидируем форму 
-        toggleButtonState(inputList, buttonElement);   // вызываем функцию, которая активирует/дезактивирует кнопку 
-      });                           
-    });
+function toggleButtonState(inputList, buttonElement) {
+  if (hasInvalidInput(inputList)) {                       // если функция hasInvalidInput(inputList) вернула true 
+    buttonElement.disabled = true;                        // у кнопки buttonElement навешиваем свойство disabled = true - отключить
+    buttonElement.classList.add('popup__button_inactive');  // заодно стилизуем саму кнопку, делая ее прозрачной
+  } else {                                                  // иначе 
+    buttonElement.disabled = false;                          // включаем кнопку 
+    buttonElement.classList.remove('popup__button_inactive'); // возвращем кнопке стиль активной
   };
+};
+ 
 
 // ___________________________ БЛОК ВАЛИДАЦИИ ФОРМ ЗАКОНЧЕН ___________________ //
 
