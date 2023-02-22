@@ -26,20 +26,12 @@ const placePopup = document.querySelector('.popup-place');
 const closeButtons = document.querySelectorAll('.popup__close'); // ПЕРЕМЕННАЯ СОЗДАНА ПОЛНОСТЬЮ ИСХОДЯ ИЗ ИДЕИ ревьюера!!!!!
 
 // переменные связанные с валидацией форм
-// const form = formElement.querySelector('.popup__text'); 
-const form = document.querySelector('.popup__form');
-const formInput = form.querySelector('.popup__text'); // выбор валидируемого поля ввода через id  // не понял зачем так сложно
-// const form = document.querySelector('[name="profileEditing"]'); // принимает форму в popup Редактирование профиля 
+
+// const form = document.querySelector('.popup__form');
+// const formInput = form.querySelector('.popup__text'); // выбор валидируемого поля ввода через id  // не понял зачем так сложно
+// const formError = form.querySelector(`.${formInput.id}-error`);
 
 
-
-const formError = form.querySelector(`.${formInput.id}-error`);
-
-
-console.log(form);
-console.log(formInput);
-console.log(formError);
-console.log(formError.textContent);
 
 
 
@@ -113,15 +105,15 @@ const hideError = (formElement, inputElement) => {
   
   const checkInputValid = (formElement, inputElement) => {
     if (!inputElement.validity.valid) {
-      showError(formElement, inputElement, inputElement.validationMessage);
+      showError(formElement, inputElement, inputElement.validationMessage);  // если поле не валидно -> показать ошибку
     } else {
-      hideError(formElement, inputElement);
+      hideError(formElement, inputElement);                                  // иначе -> спрятать ошибку
     };
   };
 
-  formInput.addEventListener('input', function() {
-    checkInputValid(form, formInput);
-  });
+  // formInput.addEventListener('input', function() {
+  //   checkInputValid(form, formInput);
+  // });
 
 
   // создаем функцию котрора будет навешивать слушателей всем полям формы
@@ -135,8 +127,29 @@ const hideError = (formElement, inputElement) => {
     });
   };
 
-  setEventListener(form);    // пока форму берем из глобальной области видимости, позже это измениться 
   
+  // Создадим функцию, которая обойдет все формы, навешает им слушателя submit и внутри себя произведет поделючение слушателей и валидайию через setEventListener(formElement)
+
+  const enableValidation = () => {
+    const formList = Array.from(document.querySelectorAll('.popup__form'));  // формируем массив (formList) из форм в проекте
+    formList.forEach((formElement) => {                                        // обходим массив форм и работаем с каждым элементом (formElement)
+      formElement.addEventListener('submit', (evt) => {                         // навешиваем каждому полю ввода (formElement) слушателя с событием submit
+        evt.preventDefault();                                                   // отменяем стандартное поведение submit                      
+      });
+      setEventListener(formElement);     // каждому элементу (теперь уже каждой формы) нвешиваем функцию написанную выше - слушатель (input) И валидатор
+    });
+  };
+
+  enableValidation();  // Вызывем функцию, которую создали. Глобальные переменные объявленные ранее (касающиеся валидации полей) тереь не нужны. 
+
+
+
+
+
+
+
+
+
 
   // ----  Функции созданнные после ревью, по замечаниям ревьюера --- //
 

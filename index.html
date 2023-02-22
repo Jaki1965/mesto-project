@@ -72,7 +72,7 @@
           minlength="2" 
           maxlength="40" 
           data-name-error="Разрешены толко: латинские буквы, кириллица, пробел и дефис">
-          <span class="popup__text-name-error popup-text-name-error">ОШИБКА ИМЕНИ</span>
+          <span class="popup__text-name-error popup-text-name-error"></span>
           <input 
           id="popup-text-career"
           class="popup__text popup__text_edit_career" 
@@ -85,7 +85,7 @@
           minlength="2" 
           maxlength="200" 
           data-name-error="Разрешены толко: латинские буквы, кириллица, пробел и дефис">
-          <span class="popup__text-career-error popup-text-career-error">ОШИБКА КАРЬЕРЫ</span>
+          <span class="popup__text-career-error popup-text-career-error"></span>
           <button class="popup__button popup-profile__button" type="submit" aria-label="Отправлет отредактированные данные на сервер">Сохранить</button>
         </form>
       </div>
@@ -96,8 +96,28 @@
         <h2 class="popup-place__header">Новое место</h2>
         <button class="popup__close popup-place__close" type="button" aria-label="Закрывает окно добавления карточки"></button> 
         <form class="popup__form popup-place__form" name="placeEditing" novalidate>
-          <input class="popup__text popup-place__text_edit_title" type="text" name="title" value="" placeholder="Название"> 
-          <input class="popup__text popup-place__text_edit_link" type="text" name="link"  value="" placeholder="Ссылка на картинку">
+          <input 
+          id="popup-text-place"
+          class="popup__text popup-place__text_edit_title" 
+          type="text" 
+          name="title" 
+          pattern="^[a-zA-Zа-яА-ЯёЁ0-9\s\-]+$"
+          value="" 
+          placeholder="Название"
+          required 
+          minlength="2" 
+          maxlength="30" 
+          data-name-error="Разрешены толко: латинские буквы, кириллица, пробел и дефис">
+          <span class="popup__text-place-error popup-text-place-error"></span>
+          <input
+          id="popup-text-link"
+          class="popup__text popup-place__text_edit_link" 
+          type="url" 
+          name="link"  
+          value="" 
+          placeholder="Ссылка на картинку"
+          required>
+          <span class="popup__text-link-error popup-text-link-error"></span>
           <button class="popup__button popup-place__button" type="submit" aria-label="Вносит карточку на сайт, на первое место">Сохранить</button>
         </form>
       </div>
