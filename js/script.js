@@ -152,6 +152,40 @@ function toggleButtonState(inputList, buttonElement) {
 
 // ___________________________ БЛОК ВАЛИДАЦИИ ФОРМ ЗАКОНЧЕН ___________________ //
 
+// ___________________________ ФУНКЦИИ ЗАКРЫТИЯ POPUP __________________________ //
+
+// Создаем функцию, котрая закрывает popup по клику на overlay
+
+console.log(popup[0]);
+console.log(popup[1]);
+console.log(popup[2]);
+
+// функционал работает, но нужно будет переписать в универсальную форму, скорее всего, через forEach обойти все popup и навешеть им событие 
+
+popup[0].addEventListener('click', function (evt) {   // забираем из коллекции поппаов (popup) самый первый и вешаем на него слушатель click
+  if (evt.target === popup[0]) {                      // условие, что клик произошел именно по поппапу, а не по форме или еще где-то
+    closePopup(profilePopup);                         // закрываем самый первый попап - это как раз profilePopup
+  }                                         
+});
+
+popup[1].addEventListener('click', function (evt) {  // забираем из коллекции поппаов (popup) второй попап и вешаем на него слушатель click
+  if (evt.target === popup[1]) {
+    closePopup(placePopup);                          // закрываем второй попап - это как раз placePopup
+  }                                         
+});
+
+popup[2].addEventListener('click', function (evt) {  // все тоже, что и в двух предыдущих, но это будут попап картинки 
+  if (evt.target === popup[2]) {
+    closePopup(openingPopupImg);
+  }                                         
+});
+
+// Создаем функцию, котрая закрывает popup по нажатию на клавишу escape
+
+
+
+
+// ___________________________ БЛОК ФУНКЦИй ЗАКРЫТИЯ POPUP ЗАКОНЧЕН__________________________ //
 
 
 
