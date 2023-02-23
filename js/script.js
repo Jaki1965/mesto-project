@@ -156,9 +156,9 @@ function toggleButtonState(inputList, buttonElement) {
 
 // Создаем функцию, котрая закрывает popup по клику на overlay
 
-console.log(popup[0]);
-console.log(popup[1]);
-console.log(popup[2]);
+// console.log(popup[0]);
+// console.log(popup[1]);
+// console.log(popup[2]);
 
 // функционал работает, но нужно будет переписать в универсальную форму, скорее всего, через forEach обойти все popup и навешеть им событие 
 
@@ -181,6 +181,15 @@ popup[2].addEventListener('click', function (evt) {  // все тоже, что 
 });
 
 // Создаем функцию, котрая закрывает popup по нажатию на клавишу escape
+// Функционал работает, но код неверный в том смысле, что нужно сделать его унивесральным ... сейчас вголове есть несколько вариантов. Попробую разные.
+
+document.addEventListener('keydown', function(evt) {
+  if (evt.key == "Escape"){
+    closePopup(profilePopup);
+    closePopup(placePopup);
+    closePopup(openingPopupImg);}
+});
+
 
 
 
