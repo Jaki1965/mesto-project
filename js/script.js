@@ -115,6 +115,15 @@ const hideError = (formElement, inputElement) => {
    
   // Создадим функцию, которая обойдет все формы, навешает им слушателя submit и внутри себя произведет подключение слушателей и валидайию через setEventListener(formElement)
 
+  enableValidation({
+    formSelector: '.popup__form',
+    inputSelector: '.popup__input',
+    submitButtonSelector: '.popup__button',
+    inactiveButtonClass: 'popup__button_disabled',
+    inputErrorClass: 'popup__input_type_error',
+    errorClass: 'popup__error_visible'
+  }); 
+
   const enableValidation = () => {
     const formList = Array.from(document.querySelectorAll('.popup__form'));  // формируем массив (formList) из форм в проекте
     formList.forEach((formElement) => {                                        // обходим массив форм и работаем с каждым элементом (formElement)
