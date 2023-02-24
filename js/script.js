@@ -18,12 +18,11 @@ const profileSubTitle = document.querySelector('.profile__subtitle'); // при�
 const placeOpenButton = document.querySelector('.profile__add-botton'); // принимает кнопку  открытия формы редактирования личных данных
 const placeCloseButton = document.querySelector('.popup-place__close'); // принимает кнопку "крестик" - закрытие формы "Новое место"
 
-// созданные после ревью
+
 const popup = document.querySelectorAll('.popup');  
 const profilePopup = document.querySelector('.popup-profile');
 const placePopup = document.querySelector('.popup-place');
-
-const closeButtons = document.querySelectorAll('.popup__close'); // ПЕРЕМЕННАЯ СОЗДАНА ПОЛНОСТЬЮ ИСХОДЯ ИЗ ИДЕИ ревьюера!!!!!
+const closeButtons = document.querySelectorAll('.popup__close'); 
 
 
 // массив карточек
@@ -55,21 +54,34 @@ const initialCards = [
   
   ];
 
+  // _______________________ ОБЪЕКТ СЕЛЕКТОРОВ ДЛЯ ПЕРЕДАЧИ В функцию enableValidation _________________ //
+
+  const enableValidationSelectors = {
+    formSelector: '.popup__form',
+    inputSelector: '.popup__text',
+    submitButtonSelector: '.popup__button',
+    inactiveButtonClass: 'popup__button_inactive',
+    inputErrorClass: 'popup__text_type_error',
+    errorClass: 'popup__text_type_active'
+  }; 
+
+  
+
  // ___________ ВАЛИДАЦИЯ ФОРМ  _____________________ //
  
  // Создадим две функции - показать ошибку и - спрятать ошибку 
 
  const showError = (formElement, inputElement, errorMessage) => {
   const errorElement = formElement.querySelector(`.${inputElement.id}-error`);
-  inputElement.classList.add('popup__text_type_error');
+  inputElement.classList.add(enableValidationSelectors['inputErrorClass']);
   errorElement.textContent = errorMessage;
-  errorElement.classList.add('popup__text_type_active');
+  errorElement.classList.add(enableValidationSelectors['errorClass']);
 };
 
 const hideError = (formElement, inputElement) => {
   const errorElement = formElement.querySelector(`.${inputElement.id}-error`);
-  inputElement.classList.remove('popup__text_type_error');
-  errorElement.classList.remove('popup__text_type_active');
+  inputElement.classList.remove(enableValidationSelectors['inputErrorClass']);
+  errorElement.classList.remove(enableValidationSelectors['errorClass']);
   errorElement.textContent = '';
 };
 
@@ -114,15 +126,6 @@ const hideError = (formElement, inputElement) => {
   };
    
   // Создадим функцию, которая обойдет все формы, навешает им слушателя submit и внутри себя произведет подключение слушателей и валидайию через setEventListener(formElement)
-
-  enableValidation({
-    formSelector: '.popup__form',
-    inputSelector: '.popup__input',
-    submitButtonSelector: '.popup__button',
-    inactiveButtonClass: 'popup__button_disabled',
-    inputErrorClass: 'popup__input_type_error',
-    errorClass: 'popup__error_visible'
-  }); 
 
   const enableValidation = () => {
     const formList = Array.from(document.querySelectorAll('.popup__form'));  // формируем массив (formList) из форм в проекте
