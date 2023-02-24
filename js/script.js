@@ -25,16 +25,6 @@ const placePopup = document.querySelector('.popup-place');
 
 const closeButtons = document.querySelectorAll('.popup__close'); // ПЕРЕМЕННАЯ СОЗДАНА ПОЛНОСТЬЮ ИСХОДЯ ИЗ ИДЕИ ревьюера!!!!!
 
-// переменные связанные с валидацией форм
-
-// const form = document.querySelector('.popup__form');
-// const formInput = form.querySelector('.popup__text'); // выбор валидируемого поля ввода через id  // не понял зачем так сложно
-// const formError = form.querySelector(`.${formInput.id}-error`);
-
-
-
-
-
 
 // массив карточек
 const initialCards = [
@@ -109,7 +99,7 @@ const hideError = (formElement, inputElement) => {
 
   
 
-  // создаем функцию котрора будет навешивать слушателей всем полям формы
+  // создаем функцию которая будет навешивать слушателей всем полям формы, найдет кнопку и подключит внутри себя функцию toggleButtonState - переключатель состояния кнопки
 
   function setEventListener(formElement) {
     const inputList = Array.from(formElement.querySelectorAll('.popup__text')); // сoздает массив из полей ввода формы 
@@ -123,7 +113,7 @@ const hideError = (formElement, inputElement) => {
     });
   };
    
-  // Создадим функцию, которая обойдет все формы, навешает им слушателя submit и внутри себя произведет поделючение слушателей и валидайию через setEventListener(formElement)
+  // Создадим функцию, которая обойдет все формы, навешает им слушателя submit и внутри себя произведет подключение слушателей и валидайию через setEventListener(formElement)
 
   const enableValidation = () => {
     const formList = Array.from(document.querySelectorAll('.popup__form'));  // формируем массив (formList) из форм в проекте
@@ -154,18 +144,11 @@ function toggleButtonState(inputList, buttonElement) {
 
 // ___________________________ ФУНКЦИИ ЗАКРЫТИЯ POPUP __________________________ //
 
-// Создаем функцию, котрая закрывает popup по клику на overlay
-
-// console.log(popup[0]);
-// console.log(popup[1]);
-// console.log(popup[2]);
-
 // Функция закрытия popup по клику на overlay 
 
 function closeOverlayClick(popup) {
   const popupClick = Array.from(popup);
   popupClick.forEach((popup) => {
-    console.log(popup);
     popup.addEventListener('click', function(evt) {
       if (evt.target === popup) {                      // условие, что клик произошел именно по поппапу, а не по форме или еще где-то
         closePopup(popup); 
@@ -176,26 +159,27 @@ function closeOverlayClick(popup) {
 
 closeOverlayClick(popup);
 
-
 // Создаем функцию, котрая закрывает popup по нажатию на клавишу escape
-// Функционал работает, но код неверный в том смысле, что нужно сделать его унивесральным ... сейчас вголове есть несколько вариантов. Попробую разные.
 
-document.addEventListener('keydown', function(evt) {
-  if (evt.key == "Escape"){
-    closePopup(profilePopup);
-    closePopup(placePopup);
-    closePopup(openingPopupImg);}
-});
+function closeOverlayEscape(popup) {
+  const popupEscape = Array.from(popup);
+  popupEscape.forEach((popup) => {
+    document.addEventListener('keydown', function(evt) {
+      if (evt.key == "Escape"){
+        closePopup(popup); 
+      }
+    });
+  });
+}
 
-
-
+closeOverlayEscape(popup);
 
 
 // ___________________________ БЛОК ФУНКЦИй ЗАКРЫТИЯ POPUP ЗАКОНЧЕН__________________________ //
 
 
 
-  // ----  Функции созданнные после ревью, по замечаниям ревьюера --- //
+ // _____________________ БЛОК ФНКЦИЙ ИЗ ПРЕДЫДУЩЕГО СПРИНТА _______________________________ //
 
   // Функция открытия popup
   function openPopup(popup) {
@@ -226,7 +210,6 @@ document.addEventListener('keydown', function(evt) {
     };
   
 
-  // --- Скрипты созданные по замечаниям ревьюера 
   
   // Открытие popup профиля 
   profileOpenBotton.addEventListener('click', function(evt) {
@@ -240,9 +223,6 @@ document.addEventListener('keydown', function(evt) {
     openPopup(placePopup);
   });
 
-    // Закрывает любые поппапы по крестику 
-    // Создано по идее ревьюера 
-    // Михаил, спасибо вам огромное!!! Просто оченьт круто и крайне элегантно. Мне для работы в будущем и как премер красивых решений - ПРОСТО САМЫЙ ТО!!!!
     closeButtons.forEach((button) => {
       const popup = button.closest('.popup');
     button.addEventListener('click', () => closePopup(popup));
