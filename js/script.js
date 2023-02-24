@@ -160,25 +160,22 @@ function toggleButtonState(inputList, buttonElement) {
 // console.log(popup[1]);
 // console.log(popup[2]);
 
-// функционал работает, но нужно будет переписать в универсальную форму, скорее всего, через forEach обойти все popup и навешеть им событие 
+// Функция закрытия popup по клику на overlay 
 
-popup[0].addEventListener('click', function (evt) {   // забираем из коллекции поппаов (popup) самый первый и вешаем на него слушатель click
-  if (evt.target === popup[0]) {                      // условие, что клик произошел именно по поппапу, а не по форме или еще где-то
-    closePopup(profilePopup);                         // закрываем самый первый попап - это как раз profilePopup
-  }                                         
-});
+function closeOverlayClick(popup) {
+  const popupClick = Array.from(popup);
+  popupClick.forEach((popup) => {
+    console.log(popup);
+    popup.addEventListener('click', function(evt) {
+      if (evt.target === popup) {                      // условие, что клик произошел именно по поппапу, а не по форме или еще где-то
+        closePopup(popup); 
+      }
+    });
+  });
+};
 
-popup[1].addEventListener('click', function (evt) {  // забираем из коллекции поппаов (popup) второй попап и вешаем на него слушатель click
-  if (evt.target === popup[1]) {
-    closePopup(placePopup);                          // закрываем второй попап - это как раз placePopup
-  }                                         
-});
+closeOverlayClick(popup);
 
-popup[2].addEventListener('click', function (evt) {  // все тоже, что и в двух предыдущих, но это будут попап картинки 
-  if (evt.target === popup[2]) {
-    closePopup(openingPopupImg);
-  }                                         
-});
 
 // Создаем функцию, котрая закрывает popup по нажатию на клавишу escape
 // Функционал работает, но код неверный в том смысле, что нужно сделать его унивесральным ... сейчас вголове есть несколько вариантов. Попробую разные.
