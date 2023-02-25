@@ -56,7 +56,7 @@ const initialCards = [
 
   // _______________________ ОБЪЕКТ СЕЛЕКТОРОВ ДЛЯ ПЕРЕДАЧИ В функцию enableValidation _________________ //
 
-  const enableValidationSelectors = {
+  const selectors = {
     formSelector: '.popup__form',
     inputSelector: '.popup__text',
     submitButtonSelector: '.popup__button',
@@ -65,25 +65,27 @@ const initialCards = [
     errorClass: 'popup__text_type_active'
   }; 
 
-  
+  console.log(selectors['errorClass']);
 
  // ___________ ВАЛИДАЦИЯ ФОРМ  _____________________ //
  
- // Создадим две функции - показать ошибку и - спрятать ошибку 
+ // Создадим две функции - показать ошибку и - спрятать ошибку // реализуем передачу классов через ключ - значение объекта enableValidationSelectors
 
  const showError = (formElement, inputElement, errorMessage) => {
+  console.log(selectors.errorClass)
   const errorElement = formElement.querySelector(`.${inputElement.id}-error`);
-  inputElement.classList.add(enableValidationSelectors['inputErrorClass']);
+  inputElement.classList.add(selectors['inputErrorClass']);
   errorElement.textContent = errorMessage;
-  errorElement.classList.add(enableValidationSelectors['errorClass']);
+  errorElement.classList.add(selectors['errorClass']);
 };
 
 const hideError = (formElement, inputElement) => {
   const errorElement = formElement.querySelector(`.${inputElement.id}-error`);
-  inputElement.classList.remove(enableValidationSelectors['inputErrorClass']);
-  errorElement.classList.remove(enableValidationSelectors['errorClass']);
+  inputElement.classList.remove(selectors['inputErrorClass']);
+  errorElement.classList.remove(selectors['errorClass']);
   errorElement.textContent = '';
 };
+
 
   // создаем функцию которая будет проверять (валидировать поле ввода)
   
@@ -94,7 +96,7 @@ const hideError = (formElement, inputElement) => {
       inputElement.setCustomValidity("");                                 // если методу отдать пустую строку, то будут выводиться стандартные сообщения
     }    
   
-    if (!inputElement.validity.valid) {``
+    if (!inputElement.validity.valid) {
       showError(formElement, inputElement, inputElement.validationMessage);  // если поле не валидно -> показать ошибку
     } else {
       hideError(formElement, inputElement);                                  // иначе -> спрятать ошибку
@@ -109,13 +111,13 @@ const hideError = (formElement, inputElement) => {
     });
   }; 
 
-  
 
   // создаем функцию которая будет навешивать слушателей всем полям формы, найдет кнопку и подключит внутри себя функцию toggleButtonState - переключатель состояния кнопки
+  // реализуем передачу классов через ключ - значение объекта enableValidationSelectors
 
   function setEventListener(formElement) {
-    const inputList = Array.from(formElement.querySelectorAll('.popup__text')); // сoздает массив из полей ввода формы 
-    const buttonElement = formElement.querySelector('.popup__button'); // найдем кнопку, которую в случае невалидности полей нужно дезактивировать
+    const inputList = Array.from(formElement.querySelectorAll(selectors['inputSelector'])); // сoздает массив из полей ввода формы 
+    const buttonElement = formElement.querySelector(selectors['submitButtonSelector']); // найдем кнопку, которую в случае невалидности полей нужно дезактивировать
     toggleButtonState(inputList, buttonElement);   // вызываем функцию, которая активирует/дезактивирует кнопку при первой загрузке страницы, чтобы кнопка была не активной с самого начала
     inputList.forEach((inputElement) => {              // обходим все элементы (inputElement) формы (ormElement) и посредством функции checkInputValid(formElement, inputElement) навешиваем им слушателей
       inputElement.addEventListener('input', () => {
@@ -128,7 +130,7 @@ const hideError = (formElement, inputElement) => {
   // Создадим функцию, которая обойдет все формы, навешает им слушателя submit и внутри себя произведет подключение слушателей и валидайию через setEventListener(formElement)
 
   const enableValidation = () => {
-    const formList = Array.from(document.querySelectorAll('.popup__form'));  // формируем массив (formList) из форм в проекте
+    const formList = Array.from(document.querySelectorAll(selectors['formSelector']));  // формируем массив (formList) из форм в проекте
     formList.forEach((formElement) => {                                        // обходим массив форм и работаем с каждым элементом (formElement)
       formElement.addEventListener('submit', (evt) => {                         // навешиваем каждому полю ввода (formElement) слушателя с событием submit
         evt.preventDefault();                                                   // отменяем стандартное поведение submit                      
@@ -144,10 +146,10 @@ const hideError = (formElement, inputElement) => {
 function toggleButtonState(inputList, buttonElement) {
   if (hasInvalidInput(inputList)) {                       // если функция hasInvalidInput(inputList) вернула true 
     buttonElement.disabled = true;                        // у кнопки buttonElement навешиваем свойство disabled = true - отключить
-    buttonElement.classList.add('popup__button_inactive');  // заодно стилизуем саму кнопку, делая ее прозрачной
+    buttonElement.classList.add(selectors['inactiveButtonClass']);  // заодно стилизуем саму кнопку, делая ее прозрачной
   } else {                                                  // иначе 
     buttonElement.disabled = false;                          // включаем кнопку 
-    buttonElement.classList.remove('popup__button_inactive'); // возвращем кнопке стиль активной
+    buttonElement.classList.remove(selectors['inactiveButtonClass']); // возвращем кнопке стиль активной
   };
 };
  
@@ -185,7 +187,6 @@ function closeOverlayEscape(popup) {
 }
 
 closeOverlayEscape(popup);
-
 
 // ___________________________ БЛОК ФУНКЦИй ЗАКРЫТИЯ POPUP ЗАКОНЧЕН__________________________ //
 
