@@ -7,20 +7,20 @@
     <meta name="author" content="Кирьянов Игорь">
     <meta name="description" content="Спринт - Mesto">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <link rel="stylesheet" href="./pages/index.css"> 
+    <!-- <link rel="stylesheet" href="./pages/index.css">  -->
     <title lang="en">Mesto</title>
   </head>
   <body class="page">
 
     <header class="header">
-      <img class="header__logo" src="./images/Vector.svg" alt="Логотип проекта">
+      <img class="header__logo" src="<%=require('./images/Vector.svg')%>" alt="Логотип проекта">
     </header>
 
     <main class="content">
 
       <section class="profile">
         <div class="profile__box-avatar-info">
-          <img class="profile__avatar" src="./images/Jacques.jpg" alt="Аватар пользователя">
+          <img class="profile__avatar" src="<%=require('./images/Jacques.jpg')%>" alt="Аватар пользователя">
           <div class="profile__info">
             <div class="profile__title-botton">
               <h1 class="profile__title">Жак-Ив Кусто</h1>
@@ -131,7 +131,7 @@
     </div>
 
 
-    <script src="js/script.js"></script>
+    <script src="index.js"></script>
 
   </body>
 </html>

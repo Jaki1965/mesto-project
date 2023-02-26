@@ -1,3 +1,8 @@
+// импорты 
+import './pages/index.css';
+
+
+/* index.js - точка входа */
 
 const formPlaceElement = document.querySelector('.popup-place__form');  // принимает элемент формы из попап Новое место
 const openingPopupImg = document.querySelector('.popup-image');   // принимает элемент попап открытия изображения
@@ -23,6 +28,9 @@ const popup = document.querySelectorAll('.popup');
 const profilePopup = document.querySelector('.popup-profile');
 const placePopup = document.querySelector('.popup-place');
 const closeButtons = document.querySelectorAll('.popup__close'); 
+
+// Импорт изображений для webpack 
+
 
 
 // массив карточек
