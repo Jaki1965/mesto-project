@@ -47,6 +47,7 @@
 * Создан обьект enableValidationSelectors содержащий значения всех необходимых для валидации селекторов. Функции showError и hideError реализованы через передачу селекторов как ключ - значение. /commit 26/
 * Последний commit перед упаковкой Webpack. /commit 27/
 * Сделана упаковка webpack. Но не разбит код на модули! Файл index.js находиться в корне проекта, а не в каталоге components. /commit 28/
+* Создан модуль validate.js содержащий скрипты относящиеся к валидации форм. Осуществлен экспорт функции export { enableValidation } и ее импорт в index.js (import { enableValidation } from "./components/validate.js";). /commit 28/
 
 
 
