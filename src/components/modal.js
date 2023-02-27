@@ -17,7 +17,7 @@ const buttonsClose = document.querySelectorAll('.popup__close');
 function closeOverlayClick(popup) {
   const popupClick = Array.from(popup);
   popupClick.forEach((popup) => {
-    popup.addEventListener('click', function(evt) {
+    popup.addEventListener('mousedown', function(evt) {
       if (evt.target === popup) {                      // условие, что клик произошел именно по поппапу, а не по форме или еще где-то
         closePopup(popup); 
       }

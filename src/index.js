@@ -8,7 +8,7 @@ import {addCard, createCard, grid} from "./components/card.js";
 // const grid = document.querySelector('.grid__list'); // принимает обертку под сетку из карточек //
 const formPlaceElement = document.querySelector('.popup-place__form');  // принимает элемент формы из попап Новое место
 const formElement = document.querySelector('.popup__form');  // принимает форму из попап
-const popup = document.querySelectorAll('.popup');  
+const popups = document.querySelectorAll('.popup');  
 
 const initialCards = [
   {
@@ -49,10 +49,10 @@ addCard(newCard, grid);
 enableValidation(selectors);  
 
 // Функция закрытия popup по клику на overlay 
-closeOverlayClick(popup);
+closeOverlayClick(popups);
 
 // Функция закрывает popup по нажатию на клавишу escape
-closeOverlayEscape(popup);
+closeOverlayEscape(popups);
 
 // submit формы profile
 formElement.addEventListener('submit', handleFormSubmit);
