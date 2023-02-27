@@ -1,9 +1,5 @@
 /* модуль содержащий скрипты работы модальных окон */
 
-//const formPlaceElement = document.querySelector('.popup-place__form');  // принимает элемент формы из попап Новое место
-// const existGrid = document.querySelector('.grid__list'); // принимает обертку под сетку из карточек //
-// const inputCardLink = formPlaceElement.querySelector('.popup-place__text_edit_link'); // принимает поле ссылки на кртинку в попап редактирования карточки //
-// const inputCardTitle = formPlaceElement.querySelector('.popup-place__text_edit_title'); // принимает поле название места в попап редактирования карточки //
 const profileOpenBotton = document.querySelector('.profile__edit-botton'); // принимает элемент - кнопка редактирования формы личных данных
 const formElement = document.querySelector('.popup__form');  // принимает форму из попап 
 const nameInput = formElement.querySelector('.popup__text_edit_name'); // принимает элемент с полем редактирования имени //
@@ -11,7 +7,6 @@ const jobInput = formElement.querySelector('.popup__text_edit_career'); // пр�
 const profileTitle = document.querySelector('.profile__title');  // принимает элемент с текстом имени //
 const profileSubTitle = document.querySelector('.profile__subtitle'); // принимает элемент с текстом рода занятий //
 const placeOpenButton = document.querySelector('.profile__add-botton'); // принимает кнопку  открытия формы редактирования личных данных
-const popup = document.querySelectorAll('.popup');  
 const profilePopup = document.querySelector('.popup-profile');  //
 const placePopup = document.querySelector('.popup-place'); //
 const closeButtons = document.querySelectorAll('.popup__close'); 
@@ -29,7 +24,6 @@ function closeOverlayClick(popup) {
   });
 };
 
-// closeOverlayClick(popup);
 
 // Функция закрывает popup по нажатию на клавишу escape
 
@@ -44,8 +38,6 @@ function closeOverlayEscape(popup) {
   });
 }
 
-// closeOverlayEscape(popup);
-
  // Функция открытия popup
  function openPopup(popup) {
   popup.classList.add('popup_opened');
@@ -55,7 +47,6 @@ function closeOverlayEscape(popup) {
 function closePopup(popup) {
   popup.classList.remove('popup_opened');
 };
-
 
 // Открытие popup профиля 
 profileOpenBotton.addEventListener('click', function(evt) {
