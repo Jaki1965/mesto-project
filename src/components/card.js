@@ -2,7 +2,6 @@
 
 import { openPopup } from "./modal.js";  // позже сменить импорт на modal.js
 
-const formPlaceElement = document.querySelector('.popup-place__form');  // принимает элемент формы из попап Новое место
 const openingPopupImg = document.querySelector('.popup-image');   // принимает элемент попап открытия изображения
 const showImg = document.querySelector('.popup-image__image');  // принимает элемент в котром хранится изображение места
 const showPopupSubtitle = document.querySelector('.popup-image__subtitle');  // принимает элемент - подпись (название места ) в попап изображения
