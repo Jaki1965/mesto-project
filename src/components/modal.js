@@ -1,5 +1,6 @@
 /* модуль содержащий скрипты работы модальных окон */
 
+
 const profileOpenBotton = document.querySelector('.profile__edit-botton'); // принимает элемент - кнопка редактирования формы личных данных
 const formElement = document.querySelector('.popup__form');  // принимает форму из попап 
 const nameInput = formElement.querySelector('.popup__text_edit_name'); // принимает элемент с полем редактирования имени //
@@ -9,7 +10,7 @@ const profileSubTitle = document.querySelector('.profile__subtitle'); // при�
 const placeOpenButton = document.querySelector('.profile__add-botton'); // принимает кнопку  открытия формы редактирования личных данных
 const profilePopup = document.querySelector('.popup-profile');  //
 const placePopup = document.querySelector('.popup-place'); //
-const closeButtons = document.querySelectorAll('.popup__close'); 
+const buttonsClose = document.querySelectorAll('.popup__close'); 
 
 // Функция закрытия popup по клику на overlay 
 
@@ -60,7 +61,7 @@ placeOpenButton.addEventListener('click', function(evt){
   openPopup(placePopup);
 });
 
-  closeButtons.forEach((button) => {
+  buttonsClose.forEach((button) => {
     const popup = button.closest('.popup');
   button.addEventListener('click', () => closePopup(popup));
 });
