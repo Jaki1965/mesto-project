@@ -48,6 +48,7 @@
 * Последний commit перед упаковкой Webpack. /commit 27/
 * Сделана упаковка webpack. Но не разбит код на модули! Файл index.js находиться в корне проекта, а не в каталоге components. /commit 28/
 * Создан модуль validate.js содержащий скрипты относящиеся к валидации форм. Осуществлен экспорт функции export { enableValidation } и ее импорт в index.js (import { enableValidation } from "./components/validate.js";). /commit 28/
+* Делаю промежуточный коммит перед тем как удалить лишние переменные и функции из index.js и card.js Сейчас это все просто закоментировано. /commit 29/
 
 
 
