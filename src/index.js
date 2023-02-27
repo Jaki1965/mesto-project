@@ -1,6 +1,6 @@
 // импорты 
 import './pages/index.css';
-import { enableValidation } from "./components/validate.js";
+import { enableValidation, selectors } from "./components/validate.js";
 import {closeOverlayClick, closeOverlayEscape} from "./components/modal.js";
 import {handleFormSubmit, handleFormSubmitPlace} from "./components/utils.js";
 
@@ -10,7 +10,7 @@ const formElement = document.querySelector('.popup__form');  // принимае
 const popup = document.querySelectorAll('.popup');  
 
 // функция валидации форм 
-enableValidation();  
+enableValidation(selectors);  
 
 // Функция закрытия popup по клику на overlay 
 closeOverlayClick(popup);
