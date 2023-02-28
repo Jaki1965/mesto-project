@@ -1,15 +1,10 @@
 /* модуль содержащий скрипты работы модальных окон */
 
+import {formElement, nameInput, jobInput, profileTitle, profileSubTitle, profilePopup, placePopup} from "./utils.js";
+
 
 const profileOpenBotton = document.querySelector('.profile__edit-botton'); // принимает элемент - кнопка редактирования формы личных данных
-const formElement = document.querySelector('.popup__form');  // принимает форму из попап 
-const nameInput = formElement.querySelector('.popup__text_edit_name'); // принимает элемент с полем редактирования имени //
-const jobInput = formElement.querySelector('.popup__text_edit_career'); // принимает элемент с полем редактирования рода занятий //
-const profileTitle = document.querySelector('.profile__title');  // принимает элемент с текстом имени //
-const profileSubTitle = document.querySelector('.profile__subtitle'); // принимает элемент с текстом рода занятий //
 const placeOpenButton = document.querySelector('.profile__add-botton'); // принимает кнопку  открытия формы редактирования личных данных
-const profilePopup = document.querySelector('.popup-profile');  //
-const placePopup = document.querySelector('.popup-place'); //
 const buttonsClose = document.querySelectorAll('.popup__close'); 
 
 // Функция закрытия popup по клику на overlay 

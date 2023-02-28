@@ -6,7 +6,7 @@ import {closePopup} from "./modal.js";
 const formPlaceElement = document.querySelector('.popup-place__form');  // принимает элемент формы из попап Новое место
 const inputCardLink = formPlaceElement.querySelector('.popup-place__text_edit_link'); // принимает поле ссылки на кртинку в попап редактирования карточки //
 const inputCardTitle = formPlaceElement.querySelector('.popup-place__text_edit_title'); // принимает поле название места в попап редактирования карточки //
-const formElement = document.querySelector('.popup__form');  // принимает форму из попап 
+const formElement = document.querySelector('.popup__form');  // принимает форму из попап _________________________________________
 const nameInput = formElement.querySelector('.popup__text_edit_name'); // принимает элемент с полем редактирования имени //
 const jobInput = formElement.querySelector('.popup__text_edit_career'); // принимает элемент с полем редактирования рода занятий //
 const profileTitle = document.querySelector('.profile__title');  // принимает элемент с текстом имени //
@@ -34,4 +34,4 @@ function handleFormSubmitPlace(evt) {
 };
 
 
-export {handleFormSubmit, handleFormSubmitPlace};
+export {handleFormSubmit, handleFormSubmitPlace, formPlaceElement, formElement, nameInput, jobInput, profileTitle,  profileSubTitle, profilePopup, placePopup};
