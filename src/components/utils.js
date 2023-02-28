@@ -14,7 +14,7 @@ const profileSubTitle = document.querySelector('.profile__subtitle'); // при�
 const profilePopup = document.querySelector('.popup-profile');  //
 const placePopup = document.querySelector('.popup-place'); //
 
-// Обработчик submit в редактировании профиля // изменено согласно замечаний ревьюера
+// Обработчик submit в редактировании профиля
 function handleFormProfileSubmit(evt) {
   evt.preventDefault(); 
   profileTitle.textContent = nameInput.value;
@@ -24,7 +24,7 @@ function handleFormProfileSubmit(evt) {
 };
 
 
-// Обработчик submit в добавлени карточки  // изменено согласно замечаний ревьюера
+// Обработчик submit в добавлени карточки 
 function handleFormSubmitPlace(evt) {
   evt.preventDefault(); 
   const newCard = createCard(inputCardTitle.value, inputCardLink.value);
