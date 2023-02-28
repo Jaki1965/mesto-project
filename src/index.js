@@ -2,7 +2,7 @@
 import './pages/index.css';
 import {enableValidation, selectors} from "./components/validate.js";
 import {openPopup, closePopup, closeOverlayClick, closeOverlayEscape} from "./components/modal.js";
-import {handleFormSubmit, handleFormSubmitPlace, formPlaceElement, formElement, nameInput, jobInput, profileTitle, profileSubTitle, profilePopup, placePopup} from "./components/utils.js";
+import {handleFormSubmit, handleFormSubmitPlace, formPlaceElement, formProfile, nameInput, jobInput, profileTitle, profileSubTitle, profilePopup, placePopup} from "./components/utils.js";
 import {addCard, createCard, grid} from "./components/card.js";
 
 
@@ -57,7 +57,7 @@ closeOverlayClick(popups);
 closeOverlayEscape(popups);
 
 // submit формы profile
-formElement.addEventListener('submit', handleFormSubmit);
+formProfile.addEventListener('submit', handleFormSubmit);
 
 // submit формы place
 formPlaceElement.addEventListener('submit', handleFormSubmitPlace);
