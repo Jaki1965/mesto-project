@@ -1,7 +1,7 @@
 // импорты 
 import './pages/index.css';
 import {enableValidation, selectors} from "./components/validate.js";
-import {openPopup, closePopup, closeOverlayClick, closeOverlayEscape} from "./components/modal.js";
+import {openPopup, closePopup, closeOverlayClick} from "./components/modal.js";
 import {handleFormSubmit, handleFormSubmitPlace, formPlaceElement, formProfile, nameInput, jobInput, profileTitle, profileSubTitle, profilePopup, placePopup} from "./components/utils.js";
 import {addCard, createCard, grid} from "./components/card.js";
 
@@ -53,8 +53,6 @@ enableValidation(selectors);
 // Функция закрытия popup по клику на overlay 
 closeOverlayClick(popups);
 
-// Функция закрывает popup по нажатию на клавишу escape
-closeOverlayEscape(popups);
 
 // submit формы profile
 formProfile.addEventListener('submit', handleFormSubmit);
@@ -78,3 +76,4 @@ placeOpenButton.addEventListener('click', function(evt){
     const popup = button.closest('.popup');
   button.addEventListener('click', () => closePopup(popup));
 });
+

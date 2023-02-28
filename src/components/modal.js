@@ -1,5 +1,6 @@
 /* модуль содержащий скрипты работы модальных окон */
 
+import {popups} from "../index.js";
 
 // Функция закрытия popup по клику на overlay 
 
@@ -14,29 +15,30 @@ function closeOverlayClick(popup) {
   });
 };
 
+//Отдельная функция закрытия попапа клавишей Escape // Создана по замечанию ревьюера 
 
-// Функция закрывает popup по нажатию на клавишу escape
+function closeByEsc(evt) {
+  if (evt.key === "Escape") {
+    const openedPopup = document.querySelector('.popup_opened');
+    closePopup(openedPopup); 
+  }
+} 
 
-function closeOverlayEscape(popup) {
-  const popupEscape = Array.from(popup);
-  popupEscape.forEach((popup) => {
-    document.addEventListener('keydown', function(evt) {
-      if (evt.key == "Escape"){
-        closePopup(popup); 
-      }
-    });
-  });
-}
 
  // Функция открытия popup
  function openPopup(popup) {
   popup.classList.add('popup_opened');
+  document.addEventListener('keydown',  closeByEsc);  
+ 
 };
 
 // Функция закрытия popup
 function closePopup(popup) {
   popup.classList.remove('popup_opened');
+  document.removeEventListener('keydown',  closeByEsc);
+  
 };
 
 
-export {openPopup, closePopup, closeOverlayClick, closeOverlayEscape};
+
+export {openPopup, closePopup, closeOverlayClick};
