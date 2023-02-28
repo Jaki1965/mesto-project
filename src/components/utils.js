@@ -15,7 +15,7 @@ const profilePopup = document.querySelector('.popup-profile');  //
 const placePopup = document.querySelector('.popup-place'); //
 
 // Обработчик submit в редактировании профиля // изменено согласно замечаний ревьюера
-function handleFormSubmit(evt) {
+function handleFormProfileSubmit(evt) {
   evt.preventDefault(); 
   profileTitle.textContent = nameInput.value;
   profileSubTitle.textContent = jobInput.value;
@@ -34,4 +34,4 @@ function handleFormSubmitPlace(evt) {
 };
 
 
-export {handleFormSubmit, handleFormSubmitPlace, formPlaceElement, formProfile, nameInput, jobInput, profileTitle,  profileSubTitle, profilePopup, placePopup};
+export {handleFormProfileSubmit, handleFormSubmitPlace, formPlaceElement, formProfile, nameInput, jobInput, profileTitle,  profileSubTitle, profilePopup, placePopup};
