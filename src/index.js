@@ -1,12 +1,16 @@
 // импорты 
 import './pages/index.css';
-import { enableValidation, selectors } from "./components/validate.js";
-import {closeOverlayClick, closeOverlayEscape} from "./components/modal.js";
-import {handleFormSubmit, handleFormSubmitPlace, formPlaceElement, formElement} from "./components/utils.js";
+import {enableValidation, selectors} from "./components/validate.js";
+import {openPopup, closePopup, closeOverlayClick, closeOverlayEscape} from "./components/modal.js";
+import {handleFormSubmit, handleFormSubmitPlace, formPlaceElement, formElement, nameInput, jobInput, profileTitle, profileSubTitle, profilePopup, placePopup} from "./components/utils.js";
 import {addCard, createCard, grid} from "./components/card.js";
 
 
 const popups = document.querySelectorAll('.popup');  
+
+const profileOpenBotton = document.querySelector('.profile__edit-botton'); // принимает элемент - кнопка редактирования формы личных данных
+const placeOpenButton = document.querySelector('.profile__add-botton'); // принимает кнопку  открытия формы редактирования личных данных
+const buttonsClose = document.querySelectorAll('.popup__close'); 
 
 const initialCards = [
   {
@@ -57,3 +61,20 @@ formElement.addEventListener('submit', handleFormSubmit);
 
 // submit формы place
 formPlaceElement.addEventListener('submit', handleFormSubmitPlace);
+
+// Открытие popup профиля 
+profileOpenBotton.addEventListener('click', function(evt) {
+  nameInput.value = profileTitle.textContent;
+  jobInput.value = profileSubTitle.textContent;
+  openPopup(profilePopup);
+});
+ 
+// Открытие попап карточки 
+placeOpenButton.addEventListener('click', function(evt){
+  openPopup(placePopup);
+});
+
+  buttonsClose.forEach((button) => {
+    const popup = button.closest('.popup');
+  button.addEventListener('click', () => closePopup(popup));
+});
