@@ -2,6 +2,7 @@
 
 import { addCard, createCard, grid } from "./card.js";
 import {closePopup} from "./modal.js";
+import { passProfileDate } from "./api.js";
 
 const formPlaceElement = document.querySelector('.popup-place__form');  // принимает элемент формы из попап Новое место
 const inputCardLink = formPlaceElement.querySelector('.popup-place__text_edit_link'); // принимает поле ссылки на кртинку в попап редактирования карточки //
@@ -14,15 +15,18 @@ const profileSubTitle = document.querySelector('.profile__subtitle'); // при�
 const profilePopup = document.querySelector('.popup-profile');  //
 const placePopup = document.querySelector('.popup-place'); //
 
+
+
 // Обработчик submit в редактировании профиля
 function handleFormProfileSubmit(evt) {
   evt.preventDefault(); 
   profileTitle.textContent = nameInput.value;
   profileSubTitle.textContent = jobInput.value;
+  passProfileDate(nameInput, jobInput);            // вызов функции передачи данных пользователя (профайла) на сервер
   closePopup(profilePopup);
   evt.target.reset();
 };
-
+ 
 
 // Обработчик submit в добавлени карточки 
 function handleFormSubmitPlace(evt) {

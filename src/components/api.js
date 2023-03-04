@@ -1,7 +1,8 @@
 /* модуль обработки api запросов и ответов */
 
-import{profileSubTitle, profileTitle} from "./utils";
+import{ profileSubTitle, profileTitle } from "./utils";
 import { addCard } from "./card";
+
 
 const chogort = 'plus-cohort-20';
 const token = '5d7e2f85-78b5-4b83-bd14-9cd0868b773e';
@@ -44,7 +45,24 @@ function getCards() {
   
 }
 
+// функция передачи данных о пользователе (профайл) на сервер //
+
+function passProfileDate(nameInput, jobInput) {
+  fetch(`https://nomoreparties.co/v1/${chogort}/users/me`, {
+    method: 'PATCH',  
+    headers: {
+      authorization: `${token}`,
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({
+      name: nameInput.value ,
+      about: jobInput.value
+    })
+  });
+}
 
 
 
-export{getUsersData, getCards}
+
+
+export{getUsersData, getCards, passProfileDate}

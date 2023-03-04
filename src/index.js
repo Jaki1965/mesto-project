@@ -13,43 +13,8 @@ const profileOpenBotton = document.querySelector('.profile__edit-botton'); // п
 const placeOpenButton = document.querySelector('.profile__add-botton'); // принимает кнопку  открытия формы редактирования личных данных
 const buttonsClose = document.querySelectorAll('.popup__close'); 
 
-const initialCards = [
-  {
-    name: 'Архыз',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
-  },
-  {
-    name: 'Челябинская область',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg'
-  },
-  {
-    name: 'Иваново',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg'
-  },
-  {
-    name: 'Камчатка',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg'
-  },
-  {
-    name: 'Холмогорский район',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg'
-  },
-  {
-    name: 'Байкал',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
-  },
-
-];
 
 
-
-
-// Создание первой сетки карточек // исправлено по замечанию ревьюера
-
-// initialCards.forEach(function(element){
-// const newCard = createCard(element.name, element.link); 
-// addCard(newCard, grid);
-// })
 
 // функция валидации форм 
 enableValidation(selectors);  
@@ -81,6 +46,5 @@ placeOpenButton.addEventListener('click', function(evt){
   button.addEventListener('click', () => closePopup(popup));
 });
 
-// работа с данными пользователя 
-// Вызываем функцию для получения данных пользователя, пока для проверки
-getUsersData();
+
+getUsersData(); // вызов получения данных пользователя с сервера
