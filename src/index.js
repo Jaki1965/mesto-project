@@ -4,6 +4,7 @@ import {enableValidation, selectors} from "./components/validate.js";
 import {openPopup, closePopup, closeOverlayClick} from "./components/modal.js";
 import {handleFormProfileSubmit, handleFormSubmitPlace, formPlaceElement, formProfile, nameInput, jobInput, profileTitle, profileSubTitle, profilePopup, placePopup} from "./components/utils.js";
 import {addCard, createCard, grid} from "./components/card.js";
+import {getUsersData} from "./components/api.js";
 
 
 const popups = document.querySelectorAll('.popup');  
@@ -40,12 +41,15 @@ const initialCards = [
 
 ];
 
+
+
+
 // Создание первой сетки карточек // исправлено по замечанию ревьюера
 
-initialCards.forEach(function(element){
-const newCard = createCard(element.name, element.link); 
-addCard(newCard, grid);
-})
+// initialCards.forEach(function(element){
+// const newCard = createCard(element.name, element.link); 
+// addCard(newCard, grid);
+// })
 
 // функция валидации форм 
 enableValidation(selectors);  
@@ -77,3 +81,6 @@ placeOpenButton.addEventListener('click', function(evt){
   button.addEventListener('click', () => closePopup(popup));
 });
 
+// работа с данными пользователя 
+// Вызываем функцию для получения данных пользователя, пока для проверки
+getUsersData();

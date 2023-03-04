@@ -1,6 +1,7 @@
 /* модуль содержащий скрипты для работы с карточками */
 
 import { openPopup } from "./modal.js";  
+import { getCards } from "./api.js";
 
 const popupImg = document.querySelector('.popup-image');   // принимает элемент попап открытия изображения
 const popupPicture = document.querySelector('.popup-image__image');  // принимает элемент в котром хранится изображение места
@@ -26,7 +27,7 @@ function openImgPopup(evt){
   openPopup(popupImg);
   };
 
- // Функция создающая карточку  /// поправлено многократно после замечаний ревьюера
+ // Функция создающая карточку  //
  function createCard(name, link){
   const cardElement = gridTemplateCell.querySelector('.grid__list-cell').cloneNode(true); 
   const elementImage = cardElement.querySelector('.element__image');
@@ -40,8 +41,15 @@ function openImgPopup(evt){
 };
 
 // Добавление карточки в сетку
-function addCard(card, box) {
-box.prepend(card);
-};
+function addCard(data){
+  data.forEach(element => {
+    grid.prepend(createCard(element.name, element.link));
+  });
+}
+// function addCard(card, box) {
+// box.prepend(card);
+// };
+
+getCards();
 
 export { addCard, createCard, grid };
