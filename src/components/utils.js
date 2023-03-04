@@ -1,8 +1,8 @@
 /* модуль утилитарные функции, которые используются в работе сразу нескольких других функций */
 
-import { addCard, createCard, grid } from "./card.js";
+import { createCard, grid } from "./card.js";
 import {closePopup} from "./modal.js";
-import { passProfileDate } from "./api.js";
+import { passProfileDate, passNewCard } from "./api.js";
 
 const formPlaceElement = document.querySelector('.popup-place__form');  // принимает элемент формы из попап Новое место
 const inputCardLink = formPlaceElement.querySelector('.popup-place__text_edit_link'); // принимает поле ссылки на кртинку в попап редактирования карточки //
@@ -30,12 +30,19 @@ function handleFormProfileSubmit(evt) {
 
 // Обработчик submit в добавлени карточки 
 function handleFormSubmitPlace(evt) {
-  evt.preventDefault(); 
-  const newCard = createCard(inputCardTitle.value, inputCardLink.value);
-  addCard(newCard, grid);
-  closePopup(placePopup);
+  evt.preventDefault();
+  passNewCard(inputCardTitle.value, inputCardLink.value)
+  .then((res) => res.json())
+  .then((res) => {
+    grid.prepend(createCard(res.name, res.link))
+    closePopup(placePopup)
+  })
+  
+  //const newCard = createCard(inputCardTitle.value, inputCardLink.value);
+  //addCard(newCard, grid);
+  
   evt.target.reset();
 };
 
 
-export {handleFormProfileSubmit, handleFormSubmitPlace, formPlaceElement, formProfile, nameInput, jobInput, profileTitle,  profileSubTitle, profilePopup, placePopup};
+export {handleFormProfileSubmit, handleFormSubmitPlace, formPlaceElement, formProfile, nameInput, jobInput, profileTitle,  profileSubTitle, profilePopup, placePopup,};

@@ -3,8 +3,9 @@ import './pages/index.css';
 import {enableValidation, selectors} from "./components/validate.js";
 import {openPopup, closePopup, closeOverlayClick} from "./components/modal.js";
 import {handleFormProfileSubmit, handleFormSubmitPlace, formPlaceElement, formProfile, nameInput, jobInput, profileTitle, profileSubTitle, profilePopup, placePopup} from "./components/utils.js";
-import {addCard, createCard, grid} from "./components/card.js";
-import {getUsersData} from "./components/api.js";
+import {createCard, grid} from "./components/card.js";
+import {getUsersData, getCards, profileAvatar} from "./components/api.js";
+import { data } from 'autoprefixer';
 
 
 const popups = document.querySelectorAll('.popup');  
@@ -13,7 +14,20 @@ const profileOpenBotton = document.querySelector('.profile__edit-botton'); // п
 const placeOpenButton = document.querySelector('.profile__add-botton'); // принимает кнопку  открытия формы редактирования личных данных
 const buttonsClose = document.querySelectorAll('.popup__close'); 
 
-
+Promise.all([getUsersData(), getCards()])
+  .then(([user, cards]) => {
+    // profileTitle.textContent = user.name;
+    // profileSubTitle.textContent = user.about;
+    // // userSelf.id = user._id;
+    // profileAvatar.src = user.avatar;
+    //методом перебора массива добавляем в разметку карточки
+    // cards.forEach((card) => {
+    //   grid.append(createCard(card.name, card.link))
+    // });
+  })
+  .catch((err) => {
+    console.log(err); // выводим ошибку в консоль, если запрос неуспешный
+  });
 
 
 // функция валидации форм 

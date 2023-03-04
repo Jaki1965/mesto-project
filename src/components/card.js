@@ -41,15 +41,19 @@ function openImgPopup(evt){
 };
 
 // Добавление карточки в сетку
-function addCard(data){
-  data.forEach(element => {
-    grid.prepend(createCard(element.name, element.link));
-  });
-}
+// function addCard(cards){
+//   cards.forEach(element => {
+//     grid.prepend(createCard(element.name, element.link));
+//   });
+// }
+
+// function addNewCard(name, link){
+//   grid.prepend(createCard(name, link));
+// }
 // function addCard(card, box) {
 // box.prepend(card);
 // };
 
-getCards();
+//getCards();
 
-export { addCard, createCard, grid };
+export { createCard, grid};
