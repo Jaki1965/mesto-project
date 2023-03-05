@@ -4,26 +4,26 @@ import {enableValidation, selectors} from "./components/validate.js";
 import {openPopup, closePopup, closeOverlayClick} from "./components/modal.js";
 import {handleFormProfileSubmit, handleFormSubmitPlace, formPlaceElement, formProfile, nameInput, jobInput, profileTitle, profileSubTitle, profilePopup, placePopup} from "./components/utils.js";
 import {createCard, grid} from "./components/card.js";
-import {getUsersData, getCards, profileAvatar} from "./components/api.js";
-import { data } from 'autoprefixer';
+import {getUsersData, getCards} from "./components/api.js";
 
 
 const popups = document.querySelectorAll('.popup');  
-
+const profileAvatar = document.querySelector('.profile__avatar');
 const profileOpenBotton = document.querySelector('.profile__edit-botton'); // принимает элемент - кнопка редактирования формы личных данных
 const placeOpenButton = document.querySelector('.profile__add-botton'); // принимает кнопку  открытия формы редактирования личных данных
 const buttonsClose = document.querySelectorAll('.popup__close'); 
+const profile = document.querySelector('.profile');
 
 Promise.all([getUsersData(), getCards()])
   .then(([user, cards]) => {
-    // profileTitle.textContent = user.name;
-    // profileSubTitle.textContent = user.about;
-    // // userSelf.id = user._id;
-    // profileAvatar.src = user.avatar;
-    //методом перебора массива добавляем в разметку карточки
-    // cards.forEach((card) => {
-    //   grid.append(createCard(card.name, card.link))
-    // });
+    profileTitle.textContent = user.name;
+    profileSubTitle.textContent = user.about;
+    profile.id = user._id;
+    profileAvatar.src = user.avatar;
+    
+    cards.forEach((card) => {
+      grid.append(createCard(card, profile))
+    });
   })
   .catch((err) => {
     console.log(err); // выводим ошибку в консоль, если запрос неуспешный
@@ -62,3 +62,5 @@ placeOpenButton.addEventListener('click', function(evt){
 
 
 getUsersData(); // вызов получения данных пользователя с сервера
+
+export { profile}

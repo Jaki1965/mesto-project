@@ -3,6 +3,7 @@
 import { createCard, grid } from "./card.js";
 import {closePopup} from "./modal.js";
 import { passProfileDate, passNewCard } from "./api.js";
+import {profile} from "../index.js"
 
 const formPlaceElement = document.querySelector('.popup-place__form');  // принимает элемент формы из попап Новое место
 const inputCardLink = formPlaceElement.querySelector('.popup-place__text_edit_link'); // принимает поле ссылки на кртинку в попап редактирования карточки //
@@ -16,14 +17,16 @@ const profilePopup = document.querySelector('.popup-profile');  //
 const placePopup = document.querySelector('.popup-place'); //
 
 
-
 // Обработчик submit в редактировании профиля
 function handleFormProfileSubmit(evt) {
   evt.preventDefault(); 
-  profileTitle.textContent = nameInput.value;
-  profileSubTitle.textContent = jobInput.value;
-  passProfileDate(nameInput, jobInput);            // вызов функции передачи данных пользователя (профайла) на сервер
-  closePopup(profilePopup);
+  passProfileDate(nameInput.value, jobInput.value)
+  .then((res) => {
+    profileTitle.textContent = res.name;
+    profileSubTitle.textContent = res.about;
+    closePopup(profilePopup);
+  })
+ 
   evt.target.reset();
 };
  
@@ -32,9 +35,9 @@ function handleFormProfileSubmit(evt) {
 function handleFormSubmitPlace(evt) {
   evt.preventDefault();
   passNewCard(inputCardTitle.value, inputCardLink.value)
-  .then((res) => res.json())
-  .then((res) => {
-    grid.prepend(createCard(res.name, res.link))
+  .then((card) => {
+    grid.prepend(createCard(card, profile));
+    
     closePopup(placePopup)
   })
   

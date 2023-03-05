@@ -1,7 +1,7 @@
 /* модуль содержащий скрипты для работы с карточками */
 
 import { openPopup } from "./modal.js";  
-import { getCards } from "./api.js";
+import { delCard, addLike, delLike } from "./api.js";
 
 const popupImg = document.querySelector('.popup-image');   // принимает элемент попап открытия изображения
 const popupPicture = document.querySelector('.popup-image__image');  // принимает элемент в котром хранится изображение места
@@ -28,32 +28,52 @@ function openImgPopup(evt){
   };
 
  // Функция создающая карточку  //
- function createCard(name, link){
+ function createCard(card, user){
   const cardElement = gridTemplateCell.querySelector('.grid__list-cell').cloneNode(true); 
   const elementImage = cardElement.querySelector('.element__image');
-  elementImage.src = link;   
-  elementImage.alt = name;   
-  cardElement.querySelector('.element__title').textContent = name;                                       
-  cardElement.querySelector('.element__delet-button').addEventListener('click', removeCard);
-  cardElement.querySelector('.element__button-heart').addEventListener('click', markHeart);
+  const buttonDel = cardElement.querySelector('.element__delet-button');
+  const buttnHeart = cardElement.querySelector('.element__button-heart');
+  const counterLike = cardElement.querySelector('.element__button-heart-count');
+  elementImage.src = card.link;   
+  elementImage.alt = card.name;
+  cardElement.querySelector('.element__title').textContent = card.name;
+  if (user.id !== card.owner._id){
+    buttonDel.classList.add('element__delet-button-inactive');
+  };        
+  buttonDel.addEventListener('click', (evt) => {delCard(card._id)
+    .then(() => { removeCard(evt)})
+  }
+    
+  );
+  counterLike.textContent = card.likes.length;
+  card.likes.forEach(() => {
+    if(card.likes._id === user._id){
+      buttnHeart.classList.add('element__button-heart_dark')
+    };
+  });
+
+  buttnHeart.addEventListener('click', (evt) => {
+    if(!evt.target.classList.contains('element__button-heart_dark')){
+      addLike(card._id)
+      .then((data) => {
+        markHeart(evt);
+        counterLike.textContent = data.likes.length;
+      })
+    }else{delLike(card._id)
+      .then((data) => {
+        markHeart(evt);
+        counterLike.textContent = data.likes.length;
+      })
+
+    }
+  })
+  
+  
   elementImage.addEventListener('click', openImgPopup);
+    
   return cardElement;
 };
 
-// Добавление карточки в сетку
-// function addCard(cards){
-//   cards.forEach(element => {
-//     grid.prepend(createCard(element.name, element.link));
-//   });
-// }
 
-// function addNewCard(name, link){
-//   grid.prepend(createCard(name, link));
-// }
-// function addCard(card, box) {
-// box.prepend(card);
-// };
 
-//getCards();
-
-export { createCard, grid};
+export { createCard, grid };

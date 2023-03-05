@@ -1,60 +1,44 @@
 /* модуль обработки api запросов и ответов */
 
-import{ profileSubTitle, profileTitle} from "./utils";
-import { createCard, grid } from "./card";
-//import { createCard } from "";
-
 
 const chogort = 'plus-cohort-20';
 const token = '5d7e2f85-78b5-4b83-bd14-9cd0868b773e';
-const profileAvatar = document.querySelector('.profile__avatar');
-
-
-
 
 //  функция получения данных о пользователе с сервера //
 
 const getUsersData = () => {
-  fetch(`https://nomoreparties.co/v1/${chogort}/users/me`, {
+  return fetch(`https://nomoreparties.co/v1/${chogort}/users/me`, {
   headers: {
     authorization: `${token}`
   },
 })
-  .then(res => res.json())
-  .then((user)=>{
-    profileAvatar.src = user.avatar;
-    profileTitle.textContent = user.name;
-    profileSubTitle.textContent = user.about;
-  })
-  .catch((err) => {
-    console.log(`Ошибка: ${err.status}`);
-  })
+.then((res) => {
+  if (res.ok) {
+    return res.json();
+  }
+  return Promise.reject(`Ошибка: ${res.status}`);
+})
 };
 
 // функция получения карточек с сервера //
 
 const getCards = () => {
-  fetch(`https://nomoreparties.co/v1/${chogort}/cards `, {
+  return fetch(`https://nomoreparties.co/v1/${chogort}/cards `, {
     headers: {
       authorization: `${token}`
     },
   })
-  .then((res) => res.json())
-  .then((cards) => {
-    cards.forEach((card) => {
-      grid.append(createCard(card.name, card.link))
-    });
-    
-   })
-  .catch((err) => {
-    console.log(`Ошибка: ${err.status}`);
-  })
-  
+  .then((res) => {
+    if (res.ok) {
+      return res.json();
+    }
+    return Promise.reject(`Ошибка: ${res.status}`);
+  }) 
 };
 
 // функция передачи данных о пользователе (профайл) на сервер //
 
-function passProfileDate(nameInput, jobInput) {
+const passProfileDate = (profileTitle, profileSubTitle) => {
   return fetch(`https://nomoreparties.co/v1/${chogort}/users/me`, {
     method: 'PATCH',  
     headers: {
@@ -62,14 +46,18 @@ function passProfileDate(nameInput, jobInput) {
       'Content-Type': 'application/json'
     },
     body: JSON.stringify({
-      name: nameInput.value ,
-      about: jobInput.value
+      name: profileTitle ,
+      about: profileSubTitle
+    })})
+    .then((res) => {
+      if (res.ok) {
+        return res.json();
+      }
+      return Promise.reject(`Ошибка: ${res.status}`);
     })
-  });
 };
 
 // функция передачи (добавления) новой карточки на сервер //
-
 
 const passNewCard = (name, link) => {
   return fetch(`https://nomoreparties.co/v1/${chogort}/cards`, {
@@ -81,11 +69,61 @@ const passNewCard = (name, link) => {
     body: JSON.stringify({
       name: name ,
       link: link
+    })})
+    .then((res) => {
+      if (res.ok) {
+        return res.json();
+      }
+      return Promise.reject(`Ошибка: ${res.status}`);
     })
-  });
 };
 
-//passNewCard();
+const delCard = (cardId) => {
+    return fetch(`https://nomoreparties.co/v1/${chogort}/cards/${cardId}`, {
+    method: 'DELETE',  
+    headers: {
+      authorization: `${token}`,
+    },
+  })
+  .then((res) => {
+    if (res.ok) {
+      return res.json();
+    }
+    return Promise.reject(`Ошибка: ${res.status}`);
+  })
+};
+
+const addLike = (cardId) => {
+  return fetch(`https://nomoreparties.co/v1/${chogort}/cards/likes/${cardId}`, {
+    method: 'PUT',  
+    headers: {
+      authorization: `${token}`,
+    },
+  })
+  .then((res) => {
+    if (res.ok) {
+      return res.json();
+    }
+    return Promise.reject(`Ошибка: ${res.status}`);
+  })
+};
+
+const delLike = (cardId) => {
+  return fetch(`https://nomoreparties.co/v1/${chogort}/cards/likes/${cardId}`, {
+    method: 'DELETE',  
+    headers: {
+      authorization: `${token}`,
+    },
+  })
+  .then((res) => {
+    if (res.ok) {
+      return res.json();
+    }
+    return Promise.reject(`Ошибка: ${res.status}`);
+  })
+};
 
 
-export{getUsersData, getCards, passProfileDate, passNewCard, profileAvatar}
+
+
+export{getUsersData, getCards, passProfileDate, passNewCard, delCard, addLike, delLike}
