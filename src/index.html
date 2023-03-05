@@ -48,7 +48,12 @@
           <button class="element__delet-button" type="button" aria-label="Удаляет карточку"></button>
           <div class="element__footer">
             <h2 class="element__title"></h2>
-            <button class="element__button-heart " type="button" aria-label="Активирует знак сердечко - понравилось"></button>
+            <div class="element__button-heart-wrap">
+              <button class="element__button-heart " type="button" aria-label="Активирует знак сердечко - понравилось"></button>
+              <div class="element__button-heart-count">4</div>
+            </div>
+            <!-- <button class="element__button-heart " type="button" aria-label="Активирует знак сердечко - понравилось"></button>
+            <div class="element__button-heart-count">4</div> -->
           </div>
         </article>
       </li>
@@ -103,7 +108,7 @@
           pattern="^[a-zA-Zа-яА-ЯёЁ0-9\s\-]+$"
           value="" 
           placeholder="Название"
-          required 
+          required c:\Users\User\Desktop\mesto-project
           minlength="2" 
           maxlength="30" 
           data-error-message="Разрешены только латинские, кириллические буквы, знаки дефиса и пробелы">

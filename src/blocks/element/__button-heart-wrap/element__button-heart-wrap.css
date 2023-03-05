@@ -1,0 +1,7 @@
+/* стили блок для размещения кнопки лайка и счетчика лайка */
+.element__button-heart-wrap  {
+  /* border: 2px solid rgb(0, 255, 38); */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}

@@ -1,0 +1,14 @@
+/* стили счетчика лайков */
+.element__button-heart-count {
+  /* border: 1px solid green; */
+  color: #000;
+  line-height: 17px;
+  font-size: 12px;
+  font-weight: 400;
+  width: 22px;
+  text-align: center;
+  /* align-self: center; */
+  /* display: inline-block;
+  justify-self: flex-start; */
+  
+}
