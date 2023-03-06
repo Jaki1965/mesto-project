@@ -42,6 +42,9 @@ function openImgPopup(evt){
   };        
   buttonDel.addEventListener('click', (evt) => {delCard(card._id)
     .then(() => { removeCard(evt)})
+    .catch((err) => {
+      console.log(err);
+    })
   }
     
   );
@@ -59,18 +62,21 @@ function openImgPopup(evt){
         markHeart(evt);
         counterLike.textContent = data.likes.length;
       })
+      .catch((err) => {
+        console.log(err);
+      })
     }else{delLike(card._id)
       .then((data) => {
         markHeart(evt);
         counterLike.textContent = data.likes.length;
       })
-
+      .catch((err) => {
+        console.log(err);
+      })
     }
   })
   
-  
   elementImage.addEventListener('click', openImgPopup);
-    
   return cardElement;
 };
 

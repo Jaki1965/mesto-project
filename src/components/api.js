@@ -123,7 +123,25 @@ const delLike = (cardId) => {
   })
 };
 
+const addAvatar = (avatar) => {
+  return fetch(`https://nomoreparties.co/v1/${chogort}/users/me/avatar`, {
+    method: 'PATCH',  
+    headers: {
+      authorization: `${token}`,
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({
+      avatar: avatar
+    })})
+    .then((res) => {
+      if (res.ok) {
+        return res.json();
+      }
+      return Promise.reject(`Ошибка: ${res.status}`);
+    })
+}
+
+// addAvatar('https://pic.rutubelist.ru/video/e3/14/e314d71dd4df944ee1b807b0c67a7f7e.jpg');
 
 
-
-export{getUsersData, getCards, passProfileDate, passNewCard, delCard, addLike, delLike}
+export{getUsersData, getCards, passProfileDate, passNewCard, delCard, addLike, delLike, addAvatar}

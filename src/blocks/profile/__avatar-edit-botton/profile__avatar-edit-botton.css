@@ -1,0 +1,21 @@
+/* стили открывающейся кнопки редактирования аватара профиля */
+.profile__avatar-edit-botton {
+  background-color: rgba(0, 0, 0, 0.8);
+  width: 120px;
+  height: 120px;
+  background-image: url(../../../images/avatar_pan.svg);
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-repeat: no-repeat;
+  background-position: center;
+  cursor: pointer;
+  opacity: 0;
+  transition: 0.3s;
+  
+}
+
+.profile__avatar-edit-botton:hover {
+  opacity: 1;
+}
+
