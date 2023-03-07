@@ -3,9 +3,9 @@
 
 // Функция закрытия popup по клику на overlay 
 
-function closeOverlayClick(popup) {
-  const popupClick = Array.from(popup);
-  popupClick.forEach((popup) => {
+function closeOverlayClick(popupElements) {
+  const popupsClick = Array.from(popupElements);
+  popupsClick.forEach((popup) => {
     popup.addEventListener('mousedown', function(evt) {
       if (evt.target === popup) {                      // условие, что клик произошел именно по поппапу, а не по форме или еще где-то
         closePopup(popup); 

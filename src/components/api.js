@@ -1,6 +1,8 @@
 /* модуль обработки api запросов и ответов */
 
-import { checkResponse } from "./utils";
+import {
+  checkResponse
+} from "./utils";
 
 const config = {
   baseUrl: 'https://nomoreparties.co/v1/plus-cohort-20',
@@ -10,7 +12,7 @@ const config = {
   },
 };
 
-function request(url, options){
+function request(url, options) {
   return fetch(url, options).then(checkResponse);
 }
 
@@ -33,22 +35,22 @@ const getCards = () => {
 const passProfileDate = (profileTitle, profileSubTitle) => {
   return request(`${config.baseUrl}/users/me`, {
     method: 'PATCH',
-    headers: config.headers ,
+    headers: config.headers,
     body: JSON.stringify({
-          name: profileTitle ,
-          about: profileSubTitle
-        })
-      })
+      name: profileTitle,
+      about: profileSubTitle
+    })
+  })
 }
 
 // функция передачи (добавления) новой карточки на сервер //
 
 const passNewCard = (name, link) => {
   return request(`${config.baseUrl}/cards`, {
-    method: 'POST',  
-    headers: config.headers ,
+    method: 'POST',
+    headers: config.headers,
     body: JSON.stringify({
-      name: name ,
+      name: name,
       link: link
     })
   })
@@ -57,10 +59,10 @@ const passNewCard = (name, link) => {
 // Запрос на удаление карточки
 
 const delCard = (cardId) => {
-    return request(`${config.baseUrl}/cards/${cardId}`, {
-      method: 'DELETE',
-      headers: config.headers,
-    })
+  return request(`${config.baseUrl}/cards/${cardId}`, {
+    method: 'DELETE',
+    headers: config.headers,
+  })
 };
 
 // Запрос на добавление лайка
@@ -70,9 +72,9 @@ const addLike = (cardId) => {
     method: 'PUT',
     headers: config.headers,
   })
- };
+};
 
- // Запрос на удаление лайка
+// Запрос на удаление лайка
 
 const delLike = (cardId) => {
   return request(`${config.baseUrl}/cards/likes/${cardId}`, {
@@ -84,12 +86,21 @@ const delLike = (cardId) => {
 const addAvatar = (avatar) => {
   return request(`${config.baseUrl}/users/me/avatar`, {
     method: 'PATCH',
-    headers: config.headers ,
+    headers: config.headers,
     body: JSON.stringify({
-          avatar: avatar
-        })
-      })
-  };
-  
- 
-export{getUsersData, getCards, passProfileDate, passNewCard, delCard, addLike, delLike, addAvatar}
+      avatar: avatar
+    })
+  })
+};
+
+
+export {
+  getUsersData,
+  getCards,
+  passProfileDate,
+  passNewCard,
+  delCard,
+  addLike,
+  delLike,
+  addAvatar
+}

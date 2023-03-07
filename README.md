@@ -34,3 +34,6 @@
 * В модуле api.js создан универсальный объект config содержащий ссылку и headers
 * В модуле api.js созданы универсальные функции checkResponse и request. Проферена функциональность. /commit 52/
 * Промежуточный коммит. /commit 53/
+* Отформатирован shift+alt+f код в всех модулях
+* Наименование переменной markHeart заменено на toggleLike
+* В модуле modals.js заменено: popup на popupElemets (много попапов) и popupCliсk на popupsCliсk (много попапов). /commit 54/
