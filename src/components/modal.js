@@ -1,8 +1,9 @@
 /* модуль содержащий скрипты работы модальных окон */
 
 import {renderLoading} from "./utils.js"
-import {passProfileDate} from "./api.js"
-
+import {passProfileDate, passNewCard} from "./api.js"
+import {profile, profileAvatar} from "../index.js"
+import {createCard,grid} from "./card.js";
 
 const buttonSumitProfile = document.querySelector('.popup-profile__button') // принимает кнопку сохранить в попап профайл
 const buttonSumitPlace = document.querySelector('.popup-place__button') // принимает кнопку сохранить в попап карточки
@@ -13,8 +14,10 @@ const jobInput = formProfile.querySelector('.popup__text_edit_career'); // пр�
 const profileTitle = document.querySelector('.profile__title'); // принимает элемент с текстом имени //
 const profileSubTitle = document.querySelector('.profile__subtitle'); // принимает элемент с текстом рода занятий //
 const profilePopup = document.querySelector('.popup-profile'); //
-
-
+const formPlaceElement = document.querySelector('.popup-place__form'); // принимает элемент формы из попап Новое место
+const inputCardLink = formPlaceElement.querySelector('.popup-place__text_edit_link'); // принимает поле ссылки на кртинку в попап редактирования карточки //
+const inputCardTitle = formPlaceElement.querySelector('.popup-place__text_edit_title'); // принимает поле название места в попап редактирования карточки //
+const placePopup = document.querySelector('.popup-place'); //
 
 
 // Обработчик submit в редактировании профиля
@@ -35,6 +38,25 @@ function handleFormProfileSubmit(evt) {
       renderLoading(false, buttonSumitProfile);
     })
 };
+
+// Обработчик submit в добавлени карточки 
+function handleFormSubmitPlace(evt) {
+  evt.preventDefault();
+  renderLoading(true, buttonSumitPlace);
+  passNewCard(inputCardTitle.value, inputCardLink.value)
+    .then((card) => {
+      grid.prepend(createCard(card, profile));
+      closePopup(placePopup)
+      evt.target.reset();
+    })
+    .catch((err) => {
+      console.log(err);
+    })
+    .finally(() => {
+      renderLoading(false, buttonSumitPlace);
+    });
+};
+
 
 // Функция закрытия popup по клику на overlay 
 
@@ -75,13 +97,19 @@ function closePopup(popup) {
 
 
 
+
 export {openPopup, 
   closePopup, 
   closeOverlayClick, 
-  handleFormProfileSubmit,  
+  handleFormProfileSubmit,
+  handleFormSubmitPlace,  
   formProfile,
   nameInput,
   jobInput,
   profileTitle,
   profileSubTitle,
-  profilePopup };
+  profilePopup,
+  placePopup,
+  formPlaceElement
+
+};

@@ -6,6 +6,7 @@ import {
 } from "./components/validate.js";
 import {
   handleFormProfileSubmit,
+  handleFormSubmitPlace,
   openPopup,
   closePopup,
   closeOverlayClick,
@@ -14,14 +15,15 @@ import {
   jobInput,
   profileTitle,
   profileSubTitle,
-  profilePopup
+  profilePopup,
+  placePopup,
+  formPlaceElement
 } from "./components/modal.js";
 import {
-  handleFormSubmitPlace,
   handleFormSubmitAvatar,
-  formPlaceElement,
+ 
   formAvatar,
-  placePopup,
+ 
   avatarPopup
 } from "./components/utils.js";
 import {
