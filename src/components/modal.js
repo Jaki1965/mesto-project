@@ -1,9 +1,21 @@
 /* модуль содержащий скрипты работы модальных окон */
 
-import {renderLoading} from "./utils.js"
-import {passProfileDate, passNewCard, addAvatar} from "./api.js"
-import {profile, profileAvatar} from "../index.js"
-import {createCard,grid} from "./card.js";
+import {
+  renderLoading
+} from "./utils.js"
+import {
+  passProfileDate,
+  passNewCard,
+  addAvatar
+} from "./api.js"
+import {
+  profile,
+  profileAvatar
+} from "../index.js"
+import {
+  createCard,
+  grid
+} from "./card.js";
 
 const buttonSumitProfile = document.querySelector('.popup-profile__button') // принимает кнопку сохранить в попап профайл
 const buttonSumitPlace = document.querySelector('.popup-place__button') // принимает кнопку сохранить в попап карточки
@@ -76,7 +88,7 @@ function handleFormSubmitAvatar(evt) {
     .finally(() => {
       renderLoading(false, buttonSumitAvatar);
     });
- 
+
 };
 
 
@@ -85,9 +97,9 @@ function handleFormSubmitAvatar(evt) {
 function closeOverlayClick(popupElements) {
   const popupsClick = Array.from(popupElements);
   popupsClick.forEach((popup) => {
-    popup.addEventListener('mousedown', function(evt) {
-      if (evt.target === popup) {                      // условие, что клик произошел именно по поппапу, а не по форме или еще где-то
-        closePopup(popup); 
+    popup.addEventListener('mousedown', function (evt) {
+      if (evt.target === popup) { // условие, что клик произошел именно по поппапу, а не по форме или еще где-то
+        closePopup(popup);
       }
     });
   });
@@ -98,34 +110,33 @@ function closeOverlayClick(popupElements) {
 function closeByEsc(evt) {
   if (evt.key === "Escape") {
     const openedPopup = document.querySelector('.popup_opened');
-    closePopup(openedPopup); 
+    closePopup(openedPopup);
   }
-} 
+}
 
 
- // Функция открытия popup
- function openPopup(popup) {
+// Функция открытия popup
+function openPopup(popup) {
   popup.classList.add('popup_opened');
-  document.addEventListener('keydown',  closeByEsc);  
- 
+  document.addEventListener('keydown', closeByEsc);
+
 };
 
 // Функция закрытия popup
 function closePopup(popup) {
   popup.classList.remove('popup_opened');
-  document.removeEventListener('keydown',  closeByEsc);
-  
+  document.removeEventListener('keydown', closeByEsc);
+
 };
 
 
-
-
-export {openPopup, 
-  closePopup, 
-  closeOverlayClick, 
+export {
+  openPopup,
+  closePopup,
+  closeOverlayClick,
   handleFormProfileSubmit,
   handleFormSubmitPlace,
-  handleFormSubmitAvatar,  
+  handleFormSubmitAvatar,
   formProfile,
   nameInput,
   jobInput,

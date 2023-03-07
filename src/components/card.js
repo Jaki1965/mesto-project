@@ -90,8 +90,6 @@ function createCard(card, user) {
   return cardElement;
 };
 
-
-
 export {
   createCard,
   grid
