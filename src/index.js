@@ -7,6 +7,7 @@ import {
 import {
   handleFormProfileSubmit,
   handleFormSubmitPlace,
+  handleFormSubmitAvatar,
   openPopup,
   closePopup,
   closeOverlayClick,
@@ -17,15 +18,10 @@ import {
   profileSubTitle,
   profilePopup,
   placePopup,
-  formPlaceElement
-} from "./components/modal.js";
-import {
-  handleFormSubmitAvatar,
- 
+  formPlaceElement,
   formAvatar,
- 
   avatarPopup
-} from "./components/utils.js";
+} from "./components/modal.js";
 import {
   createCard,
   grid

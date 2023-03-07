@@ -1,7 +1,7 @@
 /* модуль содержащий скрипты работы модальных окон */
 
 import {renderLoading} from "./utils.js"
-import {passProfileDate, passNewCard} from "./api.js"
+import {passProfileDate, passNewCard, addAvatar} from "./api.js"
 import {profile, profileAvatar} from "../index.js"
 import {createCard,grid} from "./card.js";
 
@@ -18,6 +18,9 @@ const formPlaceElement = document.querySelector('.popup-place__form'); // при
 const inputCardLink = formPlaceElement.querySelector('.popup-place__text_edit_link'); // принимает поле ссылки на кртинку в попап редактирования карточки //
 const inputCardTitle = formPlaceElement.querySelector('.popup-place__text_edit_title'); // принимает поле название места в попап редактирования карточки //
 const placePopup = document.querySelector('.popup-place'); //
+const formAvatar = document.querySelector('.popup-avatar__form'); // принимает элемент формы из попап редактирования аватара
+const inputAvatarLink = formAvatar.querySelector('.popup-avatar__text_edit_link'); // принимает поле ссылки на аватар в попап редактирования аватара //
+const avatarPopup = document.querySelector('.popup-avatar'); //
 
 
 // Обработчик submit в редактировании профиля
@@ -55,6 +58,25 @@ function handleFormSubmitPlace(evt) {
     .finally(() => {
       renderLoading(false, buttonSumitPlace);
     });
+};
+
+// Обработчик submit в редактировании аватара
+function handleFormSubmitAvatar(evt) {
+  evt.preventDefault();
+  renderLoading(true, buttonSumitAvatar);
+  addAvatar(inputAvatarLink.value)
+    .then((res) => {
+      profileAvatar.src = res.avatar;
+      closePopup(avatarPopup)
+      evt.target.reset();
+    })
+    .catch((err) => {
+      console.log(err);
+    })
+    .finally(() => {
+      renderLoading(false, buttonSumitAvatar);
+    });
+ 
 };
 
 
@@ -102,7 +124,8 @@ export {openPopup,
   closePopup, 
   closeOverlayClick, 
   handleFormProfileSubmit,
-  handleFormSubmitPlace,  
+  handleFormSubmitPlace,
+  handleFormSubmitAvatar,  
   formProfile,
   nameInput,
   jobInput,
@@ -110,6 +133,7 @@ export {openPopup,
   profileSubTitle,
   profilePopup,
   placePopup,
-  formPlaceElement
-
+  formPlaceElement,
+  formAvatar,
+  avatarPopup
 };
