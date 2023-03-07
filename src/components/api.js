@@ -1,8 +1,6 @@
 /* модуль обработки api запросов и ответов */
 
-
-const chogort = 'plus-cohort-20';
-const token = '5d7e2f85-78b5-4b83-bd14-9cd0868b773e';
+import { checkResponse } from "./utils";
 
 const config = {
   baseUrl: 'https://nomoreparties.co/v1/plus-cohort-20',
@@ -11,13 +9,6 @@ const config = {
     'Content-Type': 'application/json',
   },
 };
-
-function checkResponse(res) {
-    if (res.ok) {
-      return res.json();
-    }
-    return Promise.reject(`Ошибка: ${res.status}`);
-}
 
 function request(url, options){
   return fetch(url, options).then(checkResponse);

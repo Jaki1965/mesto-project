@@ -30,6 +30,14 @@ const  renderLoading = (isLoading, button) => {
   };
 };
 
+function checkResponse(res) {
+  if (res.ok) {
+    return res.json();
+  }
+  return Promise.reject(`Ошибка: ${res.status}`);
+};
+
+
 // Обработчик submit в редактировании профиля
 function handleFormProfileSubmit(evt) {
   evt.preventDefault(); 
@@ -86,4 +94,4 @@ function handleFormSubmitAvatar(evt) {
 };
 
 
-export {handleFormProfileSubmit, handleFormSubmitPlace, handleFormSubmitAvatar, formPlaceElement, formProfile, formAvatar, nameInput, jobInput, profileTitle,  profileSubTitle, profilePopup, placePopup, avatarPopup, inputAvatarLink};
+export {handleFormProfileSubmit, handleFormSubmitPlace, handleFormSubmitAvatar, checkResponse, formPlaceElement, formProfile, formAvatar, nameInput, jobInput, profileTitle,  profileSubTitle, profilePopup, placePopup, avatarPopup, inputAvatarLink};
