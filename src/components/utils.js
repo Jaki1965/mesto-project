@@ -10,7 +10,7 @@ import {
 import {
   passProfileDate,
   passNewCard,
-  addAvatar
+  addAvatar,
 } from "./api.js";
 import {
   profile,
@@ -34,11 +34,11 @@ const buttonSumitProfile = document.querySelector('.popup-profile__button') // �
 const buttonSumitPlace = document.querySelector('.popup-place__button') // принимает кнопку сохранить в попап карточки
 const buttonSumitAvatar = document.querySelector('.popup-avatar__button') // принимает кнопку сохранить в попап редактирования аватара
 
-const renderLoading = (isLoading, button) => {
+const renderLoading = (isLoading, button, buttonText = 'Сохранить', loadingText = 'Сохранение...') => {
   if (isLoading) {
-    button.textContent = 'Сохранение...';
+    button.textContent = loadingText;
   } else {
-    button.textContent = 'Сохранить';
+    button.textContent = buttonText;
   };
 };
 
@@ -49,6 +49,25 @@ function checkResponse(res) {
   return Promise.reject(`Ошибка: ${res.status}`);
 };
 
+// Создано по рекомендиции ревьюера 
+
+function handleSubmit(request, evt, loadingText = "Сохранение...") {
+   evt.preventDefault();
+   const submitButton = evt.submitter;
+   const initialText = submitButton.textContent;
+   renderLoading(true, submitButton, initialText, loadingText);
+   request()
+     .then(() => {
+       evt.target.reset();
+     })
+     .catch((err) => {
+       console.error(`Ошибка: ${err}`);
+     })
+     .finally(() => {
+       renderLoading(false, submitButton, initialText);
+     });
+ }
+ 
 
 // Обработчик submit в редактировании профиля
 function handleFormProfileSubmit(evt) {
@@ -59,6 +78,7 @@ function handleFormProfileSubmit(evt) {
       profileTitle.textContent = res.name;
       profileSubTitle.textContent = res.about;
       closePopup(profilePopup);
+      evt.target.reset();
     })
     .catch((err) => {
       console.log(err);
@@ -66,7 +86,6 @@ function handleFormProfileSubmit(evt) {
     .finally(() => {
       renderLoading(false, buttonSumitProfile);
     })
-  evt.target.reset();
 };
 
 // Обработчик submit в добавлени карточки 
@@ -77,6 +96,7 @@ function handleFormSubmitPlace(evt) {
     .then((card) => {
       grid.prepend(createCard(card, profile));
       closePopup(placePopup)
+      evt.target.reset();
     })
     .catch((err) => {
       console.log(err);
@@ -84,7 +104,6 @@ function handleFormSubmitPlace(evt) {
     .finally(() => {
       renderLoading(false, buttonSumitPlace);
     });
-  evt.target.reset();
 };
 
 // Обработчик submit в редактировании аватара
@@ -95,6 +114,7 @@ function handleFormSubmitAvatar(evt) {
     .then((res) => {
       profileAvatar.src = res.avatar;
       closePopup(avatarPopup)
+      evt.target.reset();
     })
     .catch((err) => {
       console.log(err);
@@ -102,7 +122,7 @@ function handleFormSubmitAvatar(evt) {
     .finally(() => {
       renderLoading(false, buttonSumitAvatar);
     });
-  evt.target.reset();
+ 
 };
 
 
