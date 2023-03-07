@@ -12,7 +12,7 @@ const profileAvatar = document.querySelector('.profile__avatar');
 const profileOpenBotton = document.querySelector('.profile__edit-botton'); // принимает элемент - кнопка редактирования формы личных данных
 const placeOpenButton = document.querySelector('.profile__add-botton'); // принимает кнопку  открытия формы добавления карточки
 const avatarOpenButton = document.querySelector('.profile__avatar-edit-botton'); // принимает кнопку  открытия формы редактирования аватара
-const buttonsClose = document.querySelectorAll('.popup__close'); 
+const closeButtons = document.querySelectorAll('.popup__close'); 
 const profile = document.querySelector('.profile');
 
 
@@ -22,7 +22,6 @@ Promise.all([getUsersData(), getCards()])
     profileSubTitle.textContent = user.about;
     profile.id = user._id;
     profileAvatar.src = user.avatar;
-    
     cards.forEach((card) => {
       grid.append(createCard(card, profile))
     });
@@ -60,18 +59,15 @@ placeOpenButton.addEventListener('click', function(evt){
   openPopup(placePopup);
 });
 
-  buttonsClose.forEach((button) => {
+closeButtons.forEach((button) => {
     const popup = button.closest('.popup');
   button.addEventListener('click', () => closePopup(popup));
 });
 
 // Открытие popup аватара
   avatarOpenButton.addEventListener('click', function(evt){
-
     openPopup(avatarPopup);
   });
 
-// Вызов получения данных пользователя с сервера
-getUsersData(); 
 
 export { profile, profileAvatar}
