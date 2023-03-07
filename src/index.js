@@ -5,22 +5,22 @@ import {
   selectors
 } from "./components/validate.js";
 import {
+  handleFormProfileSubmit,
   openPopup,
   closePopup,
-  closeOverlayClick
-} from "./components/modal.js";
-import {
-  handleFormProfileSubmit,
-  handleFormSubmitPlace,
-  handleFormSubmitAvatar,
-  formPlaceElement,
+  closeOverlayClick,
   formProfile,
-  formAvatar,
   nameInput,
   jobInput,
   profileTitle,
   profileSubTitle,
-  profilePopup,
+  profilePopup
+} from "./components/modal.js";
+import {
+  handleFormSubmitPlace,
+  handleFormSubmitAvatar,
+  formPlaceElement,
+  formAvatar,
   placePopup,
   avatarPopup
 } from "./components/utils.js";
